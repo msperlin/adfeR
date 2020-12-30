@@ -1,0 +1,42 @@
+<<echo=FALSE, results=hide>>=
+n.buy <- sample(10:100,1)
+my.asset <- sample(my.rnd.assets,1)
+
+temp2 <- temp.df[temp.df$asset.code==my.asset, ]
+
+sol.q <- n.buy*(temp2$price.bid[nrow(temp2)]-temp2$price.bid[1])
+
+rnd.vec <- afedR::afedR_gen_rnd_vec()
+my.answers <- format(sol.q*rnd.vec, digits = 8)
+@
+
+\begin{question}
+
+Consider a investor that bought \Sexpr{n.buy} debt contracts of \Sexpr{my.asset} in the first launch day of the financial contract. If the investor sold the contract in the last available date in the table, what would be its gross profit?
+
+\begin{answerlist}
+\item \Sexpr{my.answers[1]}
+\item \Sexpr{my.answers[2]}
+\item \Sexpr{my.answers[3]}
+\item \Sexpr{my.answers[4]}
+\item \Sexpr{my.answers[5]}
+\end{answerlist}
+
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+\item True.
+\item False.
+\item False.
+\item False.
+\item False.
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{10000}
+\exname{Q.1}
+\exshuffle{TRUE}
+

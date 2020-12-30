@@ -1,0 +1,62 @@
+<<echo=FALSE, results=hide>>=
+rnd.stock.1 <- sample(my.df$ticker, 1)
+rnd.stock.2 <- sample(my.df$ticker, 1)
+
+temp.df.1 <- my.df[my.df$ticker == rnd.stock.1, ]
+temp.df.2 <- my.df[my.df$ticker == rnd.stock.2, ]
+
+idx <- match(temp.df.1$ref.date, temp.df.2$ref.date)
+temp.df.1$other.asset.ret <- temp.df.2$ret.adjusted.prices[idx]
+
+my.lm <- lm(temp.df.1, formula = 'ret.adjusted.prices ~ other.asset.ret')
+
+sol.q <- coef(my.lm)[[2]]
+
+my.answers <- format(afedR::afedR_gen_rnd_vec()*sol.q, digits = 4)
+
+if (lan == 'en') {
+  question.1 <- paste0('Consider two stocks: ', rnd.stock.1, ' and ', rnd.stock.2, '.  Base on the return dataset, estimate the following linear model:' )
+  
+question.2 <- paste0('What is the value of $\\beta_1$?')
+  
+}
+
+@
+
+\begin{question}
+
+<<echo=False, results=tex>>=
+cat(paste(question.1,collapse = ""))
+@
+
+
+\begin{equation}
+R_{\Sexpr{rnd.stock.1},t} = \alpha + \beta _1 R_{\Sexpr{rnd.stock.2},t} + \epsilon _t 
+\end{equation}
+
+<<echo=False, results=tex>>=
+cat(paste(question.2,collapse = ""))
+@
+
+<<echo=FALSE, results=tex>>=
+exams::answerlist(my.answers)
+@
+
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+  \item True.
+  \item False.
+  \item False.
+  \item False.
+  \item False.
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{10000}
+\exname{Q.1}
+\exshuffle{TRUE}
+

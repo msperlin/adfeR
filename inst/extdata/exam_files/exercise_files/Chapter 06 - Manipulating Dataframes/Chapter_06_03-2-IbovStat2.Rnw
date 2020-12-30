@@ -1,0 +1,40 @@
+<<echo=FALSE, results=hide>>=
+
+sol.q <- df.ibov$price.adjusted[length(df.ibov$price.adjusted)]/df.ibov$price.adjusted[1] - 1
+
+rnd.vec <- c(1, 0.1, 0.5, 1.2, 0.8)
+my.answers <- format(rnd.vec*sol.q , digits = 4)
+
+
+@
+
+\begin{question}
+
+What is the total return of the Ibovespa index during the period in the imported dataset?
+
+\begin{answerlist}
+  \item \Sexpr{my.answers[1]}
+  \item \Sexpr{my.answers[2]}
+  \item \Sexpr{my.answers[3]}
+  \item \Sexpr{my.answers[4]}
+  \item \Sexpr{my.answers[5]}
+\end{answerlist}
+
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+  \item True.
+  \item False.
+  \item False.
+  \item False.
+  \item False.
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{10000}
+\exname{Q.3}
+\exshuffle{TRUE}
+

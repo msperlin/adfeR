@@ -1,0 +1,45 @@
+<<echo=FALSE, results=hide>>=
+
+if (lan == 'en') {
+  question <- 'If you wanted to combine the text \\verb|abc| with \\verb|def| so that the result is \\verb|abc--def|, which of the following command should be used?'
+  
+}
+
+if (lan == 'pt-br') {
+  question <- 'Caso você quisesse combinar o texto  \\verb|abc| com \\verb|def|, de forma que o resultado fosse \\verb|abc--def|, qual comando abaixo deveria ser usado?'
+}
+
+@
+
+\begin{question}
+
+<<echo=False, results=tex>>=
+cat(paste(question,collapse = ""))
+@
+
+\begin{answerlist}
+\item \verb|paste('abc','def', sep='--')|
+\item \verb|paste0('abc','def')|
+\item \verb|paste('abc-,'-def', sep='-')|
+\item \verb|cat('abc','def', sep='-')|
+\item \verb|print('abc','def', sep='-')|
+\end{answerlist}
+
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+  \item True.
+  \item False.
+  \item False.
+  \item False.
+  \item False. 
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{10000}
+\exname{Q.1}
+\exshuffle{TRUE}
+

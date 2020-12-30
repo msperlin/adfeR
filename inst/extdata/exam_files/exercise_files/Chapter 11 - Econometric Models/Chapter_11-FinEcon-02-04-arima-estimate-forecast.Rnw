@@ -1,0 +1,42 @@
+<<echo=FALSE, results=hide>>=
+out.for <- predict(my.arima, n.ahead = 5)
+
+sol.q <- out.for$pred[1]
+
+my.answers <- format(afedR::afedR_gen_rnd_vec()*sol.q, digits = 4)
+
+if (lan == 'en') {
+  question.1 <- paste0('Based on the previously estimated model for stock ', my.rnd.stock, ', what is the forecasted return for t+1')
+  
+}
+
+@
+
+\begin{question}
+
+<<echo=False, results=tex>>=
+cat(paste(question.1,collapse = ""))
+@
+
+<<echo=FALSE, results=tex>>=
+exams::answerlist(my.answers)
+@
+
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+  \item True.
+  \item False.
+  \item False.
+  \item False.
+  \item False.
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{10000}
+\exname{Q.1}
+\exshuffle{TRUE}
+

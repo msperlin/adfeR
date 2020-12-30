@@ -1,0 +1,33 @@
+```{r data generation, echo = FALSE, results = "hide"}
+my.f.df.stocks <- afedR::afedR_get_data_file('SP500_comp_long_2014-10-17_2019-10-16.rds')
+df.stocks <- readr::read_rds(my.f.df.stocks)
+
+unique.tickers <- unique(df.stocks$ticker)
+rnd.ticker <- sample(unique.tickers, 1)
+
+df.single.stock <- df.stocks %>%
+  dplyr::filter(ticker == rnd.ticker)
+
+sol.q <- as.numeric(max(df.single.stock$ref.date) - min(df.single.stock$ref.date))
+
+rnd.vec <- afedR::afedR_gen_rnd_vec()
+my.answers <- format(floor(rnd.vec*sol.q) , digits = 4)
+```
+
+Question
+========
+
+Using the same data as previous exercise, filter the table for ticker `r rnd.ticker`. Find out the oldest and the more recent date available in the resulting table. What is the number of days between these dates?
+
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(my.answers, markup = "markdown")
+```
+
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: t statistic
+exshuffle: TRUE

@@ -1,0 +1,45 @@
+<<echo=FALSE, results=hide>>=
+tab <- tab %>%
+  mutate(ret.for = predict(arima.col)$pred[1])
+
+sol.q <- tab$ticker[which.max(tab$ret.for)]
+
+possible.sol <- tab$ticker[tab$ticker != sol.q]
+
+my.answers <- c(sol.q, sample(possible.sol, 4))
+
+if (lan == 'en') {
+  question.1 <- paste0('Based on the arima models estimated in the previous exercise, perform, for all assets, a t+1 forecast for the conditional mean. Which stock has the highest value of forecasted return at time t+1?' )
+  
+}
+
+@
+
+\begin{question}
+
+<<echo=False, results=tex>>=
+cat(paste(question.1,collapse = ""))
+@
+
+<<echo=FALSE, results=tex>>=
+exams::answerlist(my.answers)
+@
+
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+\item True.
+\item False.
+\item False.
+\item False.
+\item False.
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{10000}
+\exname{Q.1}
+\exshuffle{TRUE}
+

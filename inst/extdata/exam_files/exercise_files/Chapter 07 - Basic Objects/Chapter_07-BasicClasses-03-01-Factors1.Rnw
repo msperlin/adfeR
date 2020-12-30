@@ -1,0 +1,68 @@
+<<echo=FALSE, results=hide>>=
+my.seed <- sample(1:100, 1)
+
+set.seed(my.seed)
+my.factor <- factor(sample(1:1000,100))
+
+if (lan == 'en') {
+  question.1 <- paste0('Create the following factor object in R with my.seed=',my.seed, ':')
+  question.2 <- paste0('After converting this object of type factor to numerical values, what is the sum of the elements of the resulting object?')
+}
+
+if (lan == 'pt-br') {
+  
+  question.1 <- paste0('Crie o seguinte objeto de fator no R com my.seed=',my.seed, ':')
+  question.2 <- paste0('Após converter este objeto do tipo fator para valores numéricos, qual a soma dos elementos do objeto resultante?')
+  
+}
+
+sol.q <-sum(as.numeric(as.character(my.factor)))
+
+my.answers <- character(5)
+my.answers[1] <- sol.q
+my.answers[2] <- sum(as.numeric(my.factor))
+my.answers[3] <- floor(sol.q/2)
+my.answers[4] <- sol.q +1514
+my.answers[5] <- sol.q -1978
+
+@
+
+\begin{question}
+
+<<echo=False, results=tex>>=
+cat(paste(question.1,collapse = ""))
+@
+
+<<>>=
+set.seed(my.seed)
+my.factor <- factor(sample(1:1000,100))
+@
+
+<<echo=False, results=tex>>=
+cat(paste(question.2,collapse = ""))
+@
+
+
+<<echo=FALSE, results=tex>>=
+exams::answerlist(my.answers,markup = 'latex')
+@
+
+
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+  \item True.
+  \item False.
+  \item False.
+  \item False.
+  \item False. 
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{10000}
+\exname{Q.1}
+\exshuffle{TRUE}
+

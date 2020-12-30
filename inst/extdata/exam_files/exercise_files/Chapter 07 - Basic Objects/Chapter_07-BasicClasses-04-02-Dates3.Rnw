@@ -1,0 +1,51 @@
+<<echo=FALSE, results=hide>>=
+
+time.1 <- Sys.time()
+my.sec <- sample(3000:10000,1)
+
+
+if (lan == 'en') {
+  
+  question.1 <- paste0('Whats the date and time located after ', my.sec, ' seconds from ', time.1,'?')
+}
+
+if (lan == 'pt-br') {
+  question.1 <- paste0('Qual data e horário é localizado ',my.sec, ' segundos após ',time.1,'?')
+  
+}
+
+sol.q <- time.1 + my.sec
+
+my.answers <- sol.q  + c(0, 200, -500, -904, 878)
+
+@
+
+\begin{question}
+
+<<echo=False, results=tex>>=
+cat(paste(question.1,collapse = ""))
+@
+
+<<echo=FALSE, results=tex>>=
+exams::answerlist(my.answers,markup = 'latex')
+@
+
+
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+  \item True.
+  \item False.
+  \item False.
+  \item False.
+  \item False. 
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{10000}
+\exname{Q.1}
+\exshuffle{TRUE}
+

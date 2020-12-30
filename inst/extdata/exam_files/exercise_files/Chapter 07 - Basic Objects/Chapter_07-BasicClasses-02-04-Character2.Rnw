@@ -1,0 +1,54 @@
+<<echo=FALSE, results=hide>>=
+
+my.letter <- sample(letters,1)
+
+if (lan == 'en') {
+  question.1 <- paste0('Based in object my.char created in previous question, if we divided it in several smaller pieces using letter"', my.letter, '", as the separator, what is the number of characters in the largest piece?')
+}
+
+if (lan == 'pt-br') {
+  
+  question.1 <- paste0('Baseado no objeto my.char criado anteriormente, caso dividíssemos o mesmo em diversos pedaços menores utilizando a letra "', my.letter, '", qual é o número de characteres no maior pedaço encontrado?')
+  
+}
+
+sol.q <-max(nchar(strsplit(x = my.char, split = my.letter, fixed = T)[[1]]))
+
+my.answers <- sol.q  + c(0, sample(seq(-(sol.q-1),sol.q+50,by = 3),4))
+
+@
+
+\begin{question}
+
+<<echo=False, results=tex>>=
+cat(paste(question.1,collapse = ""))
+@
+
+<<>>=
+set.seed(my.seed)
+my.char <- paste(sample(letters,5000,replace = T), collapse = '')
+@
+
+<<echo=FALSE, results=tex>>=
+exams::answerlist(my.answers,markup = 'latex')
+@
+
+
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+  \item True.
+  \item False.
+  \item False.
+  \item False.
+  \item False. 
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{10000}
+\exname{Q.1}
+\exshuffle{TRUE}
+

@@ -1,0 +1,17 @@
+<!-- html table generated in R 3.3.3 by xtable 1.8-2 package -->
+<!-- Sun Mar 19 15:46:34 2017 -->
+<table border=1>
+<caption align="bottom"> Descriptive Return Statistics </caption>
+<tr> <th> Stocks </th> <th> Mean.Return </th> <th> Standard.Dev..of.Ret </th> <th> Maximum.Return </th> <th> Minimum.Return </th>  </tr>
+  <tr> <td> Stock 1 </td> <td align="right"> 0.41 </td> <td align="right"> 0.44 </td> <td align="right"> 0.87 </td> <td align="right"> 0.43 </td> </tr>
+  <tr> <td> Stock 2 </td> <td align="right"> 0.22 </td> <td align="right"> 0.71 </td> <td align="right"> 0.13 </td> <td align="right"> 0.73 </td> </tr>
+  <tr> <td> Stock 3 </td> <td align="right"> 1.28 </td> <td align="right"> 0.20 </td> <td align="right"> 0.70 </td> <td align="right"> 0.08 </td> </tr>
+  <tr> <td> Stock 4 </td> <td align="right"> -1.24 </td> <td align="right"> 0.34 </td> <td align="right"> 0.93 </td> <td align="right"> 0.46 </td> </tr>
+  <tr> <td> Stock 5 </td> <td align="right"> 0.03 </td> <td align="right"> 0.27 </td> <td align="right"> 0.91 </td> <td align="right"> 0.84 </td> </tr>
+  <tr> <td> Stock 6 </td> <td align="right"> 0.56 </td> <td align="right"> 0.36 </td> <td align="right"> 0.89 </td> <td align="right"> 0.40 </td> </tr>
+  <tr> <td> Stock 7 </td> <td align="right"> 2.58 </td> <td align="right"> 0.46 </td> <td align="right"> 0.17 </td> <td align="right"> 0.53 </td> </tr>
+  <tr> <td> Stock 8 </td> <td align="right"> 1.26 </td> <td align="right"> 0.83 </td> <td align="right"> 0.43 </td> <td align="right"> 0.25 </td> </tr>
+  <tr> <td> Stock 9 </td> <td align="right"> 0.03 </td> <td align="right"> 0.13 </td> <td align="right"> 0.17 </td> <td align="right"> 0.90 </td> </tr>
+  <tr> <td> Stock 10 </td> <td align="right"> -0.10 </td> <td align="right"> 0.72 </td> <td align="right"> 0.20 </td> <td align="right"> 0.35 </td> </tr>
+   <a name=fig:DescRetStats></a>
+</table>

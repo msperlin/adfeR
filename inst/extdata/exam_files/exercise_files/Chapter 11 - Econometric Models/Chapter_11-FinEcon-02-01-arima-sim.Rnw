@@ -1,0 +1,72 @@
+<<echo=FALSE, results=hide>>=
+n.obs <- sample(100:500,1)
+AR <- sample(seq(0.1, 0.5, by = 0.1), 1) # if let free, it stops with "'ar' part of model is not stationary"
+MA <- sample(seq(-0.15, -0.05, by = 0.02),1)
+
+# set model's parameters
+my.model <- list(ar = AR, ma = MA )
+my.sd <- sample(seq(0.5, 1.5, by = 0.1), 1)
+
+# simulate model
+my.seed <- sample(1:100,1)
+set.seed(my.seed)
+my.ts <- arima.sim(n = n.obs,
+                   model = my.model ,
+                   sd = my.sd)
+
+sol.q <- sum(my.ts > 0)
+
+possible.answers <- 0:n.obs
+
+possible.answers <- possible.answers[- which(sol.q == possible.answers) ]
+
+my.answers <- c(sol.q, sample(possible.answers, 4))
+
+if (lan == 'en') {
+  question.1 <- paste0('Using set.seed = ', my.seed, ' and function arima.sim, simulate ', n.obs, ' observations of the following ARMA model:')
+
+  question.2 <- paste0('How many observations of the simulated model are higher than 0?')
+}
+
+@
+
+\begin{question}
+
+<<echo=False, results=tex>>=
+cat(paste(question.1,collapse = ""))
+@
+
+\begin{equation}
+y_t = \Sexpr{AR} y_{t-1} + \Sexpr{MA} \epsilon _{t-1} + \epsilon _{t}
+\end{equation}
+
+\begin{equation}
+\epsilon _{t} \sim N(0, \Sexpr{my.sd^2})
+\end{equation}
+
+<<echo=False, results=tex>>=
+cat(paste(question.2,collapse = ""))
+@
+
+<<echo=FALSE, results=tex>>=
+exams::answerlist(my.answers)
+@
+
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+  \item True.
+  \item False.
+  \item False.
+  \item False.
+  \item False.
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{10000}
+\exname{Q.1}
+\exshuffle{TRUE}
+

@@ -1,0 +1,59 @@
+<<echo=FALSE, results=hide>>=
+rnd.stock <- sample(my.df$ticker, 1)
+temp.df <- my.df[my.df$ticker == rnd.stock, ]
+temp.df$Dweek <- factor(weekdays(temp.df$ref.date),
+                        levels = c('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'))
+
+my.lm <- lm(temp.df, formula = 'ret.adjusted.prices ~ -1 + ret.mkt + Dweek')
+
+idx.theta <- sample(1:5, 1)
+sol.q <- coef(my.lm)[[idx.theta]]
+
+my.answers <- format(afedR::afedR_gen_rnd_vec()*sol.q, digits = 4)
+
+if (lan == 'en') {
+  question.1 <- paste0('Using the same data as previous exercises, estimate the following model for stock ', rnd.stock, '.')
+
+question.2 <- paste0('Where $WeekDummy _{i,t}$ is a dummy variable that takes value 1 if the day of the week is $i$ (monday to friday). What is the estimated value of parameter $\\theta_', idx.theta,'$?')
+
+}
+
+@
+
+\begin{question}
+
+<<echo=False, results=tex>>=
+cat(paste(question.1,collapse = ""))
+@
+
+
+\begin{equation}
+R_t = \beta _1 R_{M,t} + \sum ^{5} _{i=1} \theta _i WeekDummy _{i,t} +  \epsilon _t
+\end{equation}
+
+<<echo=False, results=tex>>=
+cat(paste(question.2,collapse = ""))
+@
+
+<<echo=FALSE, results=tex>>=
+exams::answerlist(my.answers)
+@
+
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+  \item True.
+  \item False.
+  \item False.
+  \item False.
+  \item False.
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{10000}
+\exname{Q.1}
+\exshuffle{TRUE}
+

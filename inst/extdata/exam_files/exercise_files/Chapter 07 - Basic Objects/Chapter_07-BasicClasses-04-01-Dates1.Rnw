@@ -1,0 +1,55 @@
+<<echo=FALSE, results=hide>>=
+
+my.date <- sample(as.Date(Sys.Date()) + (-500:500),1)
+my.diff <- sample(50:100,1)
+
+if (lan == 'en') {
+  question.1 <- paste0('What is the date ', my.diff, ' days after ', my.date,'?')
+}
+
+if (lan == 'pt-br') {
+  
+  question.1 <- paste0('Qual é a data localizada após ',my.diff,' dias de ',my.date,'?')
+  
+}
+
+sol.q <-my.date + my.diff
+
+my.answers <- character(5)
+my.answers[1] <- as.character(sol.q)
+my.answers[2] <- as.character(sol.q+1)
+my.answers[3] <- as.character(sol.q-1)
+my.answers[4] <- as.character(sol.q-5)
+my.answers[5] <- as.character(sol.q-10)
+
+@
+
+\begin{question}
+
+<<echo=False, results=tex>>=
+cat(paste(question.1,collapse = ""))
+@
+
+<<echo=FALSE, results=tex>>=
+exams::answerlist(my.answers,markup = 'latex')
+@
+
+
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+  \item True.
+  \item False.
+  \item False.
+  \item False.
+  \item False. 
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{10000}
+\exname{Q.1}
+\exshuffle{TRUE}
+

@@ -1,0 +1,62 @@
+<<echo=FALSE, results=hide>>=
+library(lmtest)
+# Durbin Watson test - Serial correlation
+# Null Hypothesis: No serial correlation in residual
+
+do.wald.test <- function(df.in){
+  require(lmtest)
+  my.lm <- lm(df.in, formula = ret.adjusted.prices ~ ret.mkt)
+
+  p.value <- dwtest(my.lm)$p.value
+  return(p.value)
+}
+
+my.pvalues <- as.numeric(by(data = my.df,
+                            INDICES = my.df$ticker,
+                            FUN = do.wald.test))
+
+sol.q <- sum(my.pvalues <= 0.05)
+
+possible.answers <- 0:n.stocks
+
+possible.answers <- possible.answers[- which(sol.q == possible.answers) ]
+
+my.answers <- c(sol.q, sample(possible.answers, 4))
+
+if (lan == 'en') {
+  question.1 <- paste0('After estimating a beta model for each of the assets in the dataset, use package lmtest to perform the Durbin Watson test for all linear models. How many of the ', n.stocks, ' stocks reject the null hypothesis of the test at 5\\%?')
+}
+
+
+
+@
+
+\begin{question}
+
+<<echo=False, results=tex>>=
+cat(paste(question.1,collapse = ""))
+@
+
+
+<<echo=FALSE, results=tex>>=
+exams::answerlist(my.answers)
+@
+
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+  \item True.
+  \item False.
+  \item False.
+  \item False.
+  \item False.
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{10000}
+\exname{Q.1}
+\exshuffle{TRUE}
+

@@ -1,0 +1,84 @@
+---
+title: "Analyzing Financial and Economic Data with R  "
+author: "Marcelo S. Perlin"
+date: "`r Sys.Date()`"
+output:
+  html_document: default
+  word_document: default
+  pdf_document: default
+subtitle: 'Chapter 12 - Reporting Results'
+---
+
+```{r setup, include=FALSE}
+book.site <- 'https://www.msperlin.com/blog/publication/2017_book-pafdr-en/'
+book.site.zip <- 'https://www.msperlin.com/blog/files/pafdr%20files/Code_Data_pafdR.zip'
+
+knitr::opts_chunk$set(message = FALSE)
+```
+
+
+## Exercises
+
+**01. Consider the Grunfeld data available at link [https://eeecon.uibk.ac.at/~zeileis/grunfeld/Grunfeld.csv](https://eeecon.uibk.ac.at/~zeileis/grunfeld/Grunfeld.csv). Import the data in R and create a descriptive table of the variables. This table should provide enough information for the reader to understand the data. Use `xtable` package to report it in LaTeX or Word/Writer format.**
+
+```{r}
+library(tidyverse)
+
+my_url <- 'https://eeecon.uibk.ac.at/~zeileis/grunfeld/Grunfeld.csv'
+
+df_grunfeld <- read_csv(my_url, col_types = cols())
+
+my_tab <- tibble(nrows = nrow(df_grunfeld),
+                 ncol = ncol(df_grunfeld),
+                 n_companies = length(unique(df_grunfeld$firm)),
+                 n_years = length(unique(df_grunfeld$year)))
+
+my_tab
+
+library(xtable)
+
+# Save to lates
+# save to temp file
+my_tex_file <- tempfile(pattern = 'table', fileext = '.tex')
+print(xtable(my_tab), file = my_tex_file)
+
+readr::read_lines(my_tex_file)
+```
+
+**02. Using `BatchGetSymbols::GetSP500Stocks` function, select four random stocks and download stock prices for the previous 3 years. Estimate an ARIMA(1,0,1) model for each stock and report the result on the R screen with `texreg::screenreg` function.**
+
+```{r}
+library(BatchGetSymbols)
+library(tidyverse)
+
+tickers <- sample(GetSP500Stocks()$Tickers, 4)
+first_date <- Sys.Date() - 3*365
+last_date  <- Sys.Date()
+
+df_stocks <- BatchGetSymbols(tickers = tickers, 
+                             first.date = first_date, 
+                             last.date = last_date)[[2]]
+
+
+my_tab <- df_stocks %>%
+  na.omit() %>%
+  group_by(ticker) %>%
+  do(my_arima = arima(x = .$ret.adjusted.prices, 
+                      order = c(1, 0, 1))) 
+
+glimpse(my_tab)
+
+# solution
+library(texreg)
+
+screenreg(my_tab$my_arima)
+```
+
+
+**03. Create a new report in _RMarkdown_ covering the two previous exercises. Compile the report in html and open it in your browser.**
+
+Solution available [here](TODO).
+
+**04. [CHALLENGE] - Download SP500 components data for the past three years. Estimate an ARMA(1, 1) - Garch(1, 1) model for the returns of each stock. Now, let's automate a reporting procedure. Write a function that takes as input a Garch model and output a text with the report of the results. Use this function in a rmarkdown document, providing a paragraph for each stock in the database.  **
+
+Solution available [here](TODO).

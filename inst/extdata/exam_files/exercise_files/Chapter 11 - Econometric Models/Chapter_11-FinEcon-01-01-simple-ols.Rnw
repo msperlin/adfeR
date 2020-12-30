@@ -1,0 +1,87 @@
+<<echo=FALSE, results=hide>>=
+library(readr)
+
+f.in <- afedR::afedR_get_data_file('SP500_comp_long_2014-10-17_2019-10-16.rds')
+df.stocks <- readr::read_rds(f.in)
+
+df.stocks <- df.stocks[complete.cases(df.stocks), ]
+unique.stocks <- unique(df.stocks$ticker)
+
+mkt.ticker <- '^GSPC'
+
+n.stocks <- 25
+my.stocks <- sample(unique.stocks, n.stocks)
+
+my.df <- df.stocks[df.stocks$ticker %in% my.stocks,  ]
+df.mkt <- df.stocks[df.stocks$ticker == mkt.ticker, ]
+
+idx <- match(my.df$ref.date, df.mkt$ref.date)
+my.df$ret.mkt <- df.mkt$ret.adjusted.prices[idx]
+
+my.df <- na.omit(my.df)
+
+rnd.stock <- sample(my.df$ticker, 1)
+
+temp.df <- my.df[my.df$ticker == rnd.stock, ]
+
+my.beta <- coef(lm(temp.df, formula = ret.adjusted.prices ~ ret.mkt))[2]
+
+sol.q <- my.beta
+
+my.answers <- format(afedR::afedR_gen_rnd_vec()*sol.q, digits = 4)
+
+if (lan == 'en') {
+  question.1 <- paste0('Consider the financial data available in file \\verb|', basename(f.in), '| and load it in R. Notice that the actual market index is included as ticker ', mkt.ticker, '.')
+
+  question.2 <- paste0('After importing the dataset, filter out any row with NA values (you can use function complete.cases() or na.omit() for that). From the clean data, select the following stocks and exclude the rest from the dataset:')
+
+  question.3 <- paste0('Using arithmetic returns from the adjusted prices, what is the value of beta for stock ', rnd.stock, '?')
+
+}
+
+@
+
+\begin{question}
+
+<<echo=False, results=tex>>=
+cat(paste(question.1,collapse = ""))
+@
+
+<<echo=False, results=tex>>=
+cat(paste(question.2,collapse = ""))
+@
+
+\vspace{1.5cm}
+\Sexpr{paste(my.stocks, collapse = ', ')}
+\vspace{1.5cm}
+
+<<echo=False, results=tex>>=
+cat(paste(question.3,collapse = ""))
+@
+
+\begin{equation}
+R_t = \alpha + \beta R_{M,t} + \epsilon _t
+\end{equation}
+
+<<echo=FALSE, results=tex>>=
+exams::answerlist(my.answers)
+@
+
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+  \item True.
+  \item False.
+  \item False.
+  \item False.
+  \item False.
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{10000}
+\exname{Q.1}
+\exshuffle{TRUE}
+

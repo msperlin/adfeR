@@ -1,0 +1,72 @@
+<<echo=FALSE, results=hide>>=
+require(tidyverse)
+
+my.max.order <- sample(3:8, 1)
+
+f.in <- afedR::afedR_get_data_file('IbovComp_long_2015-01-01_2019-11-10.rds')
+df.stocks.bov <- readr::read_rds(f.in)
+
+ret_fct <- function(price, ticker) {
+  require(tidyverse)
+
+  ret <- price/dplyr::lag(price) - 1
+  idx <- ticker != dplyr::lag(ticker)
+
+  ret[idx] <- NA
+  return(ret)
+}
+
+df.stocks.bov <- df.stocks.bov %>%
+  mutate(ret.adjusted.prices = ret_fct(price.adjusted, ticker))
+
+n.stocks <- length(unique(df.stocks.bov$ticker))
+
+tab <- df.stocks.bov %>%
+  group_by(ticker) %>%
+  do(arima.col = forecast::auto.arima(.$ret.adjusted.prices,
+                                      max.order = my.max.order ))
+
+tab$ar.order <- sapply(X = tab$arima.col, FUN = function(x) x$arma[1])
+
+sol.q <- sum(tab$ar.order==0)
+
+my.seq <- seq(10, nrow(tab), by = 1)
+my.seq <- my.seq[my.seq != sol.q]
+
+my.answers <- c(sol.q, sample(my.seq, 4))
+
+if (lan == 'en') {
+  question.1 <- paste0('Use the daily arithmetic return data for all ', n.stocks, ' stocks available in file \\verb|', basename(f.in), '| (you need to create the return column), estimate the best arima model for each asset with function forecast::auto.arima using a maximum order (input max.order) of ', my.max.order, '. How many stocks have AR lag order equal to 0?' )
+
+}
+
+@
+
+\begin{question}
+
+<<echo=False, results=tex>>=
+cat(paste(question.1,collapse = ""))
+@
+
+<<echo=FALSE, results=tex>>=
+exams::answerlist(my.answers)
+@
+
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+\item True.
+\item False.
+\item False.
+\item False.
+\item False.
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{10000}
+\exname{Q.1}
+\exshuffle{TRUE}
+

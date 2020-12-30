@@ -1,0 +1,71 @@
+<<echo=FALSE, results=hide>>=
+library(fGarch)
+
+my.n <- sample(500:1000, 1)
+
+my.spec <- garchSpec(model = list(ar = 0.1, ma = -0.05,
+                                  omega = 0.0001, alpha = 0.1,
+                                  beta = 0.8), cond.dist = 'norm'  )
+
+my.coef <- coef(my.spec)
+
+my.seed <- sample(1:100, 1)
+set.seed(my.seed)
+sim.garch <- garchSim(spec = my.spec, n = my.n)
+
+sol.q <- last(sim.garch)
+
+my.answers <- format(afedR::afedR_gen_rnd_vec()*sol.q, digits = 4)
+
+if (lan == 'en') {
+  question.1 <- paste0('Consider the following ARMA-GARCH process:')
+
+  question.2 <- paste0('Using set.seed = ', my.seed, ', simulate ', my.n , ' observations of the model. What is the result for the last simulated value in the series?')
+}
+
+@
+
+\begin{question}
+
+<<echo=False, results=tex>>=
+cat(paste(question.1,collapse = ""))
+@
+
+\begin{equation}
+y _t =   + \Sexpr{my.coef['ar']} y_{t-1} + \Sexpr{my.coef['ma']} \epsilon_{t-1} + \epsilon _t
+\end{equation}
+
+\begin{equation}
+\epsilon _t \sim N \left(0, h _t \right )
+\end{equation}
+
+\begin{equation}
+h _t = \Sexpr{my.coef['omega']} + \Sexpr{my.coef['alpha']} \epsilon ^2 _{t-1}+ \Sexpr{my.coef['beta']} h_{t-1}
+\end{equation}
+
+<<echo=False, results=tex>>=
+cat(paste(question.2,collapse = ""))
+@
+
+<<echo=FALSE, results=tex>>=
+exams::answerlist(my.answers)
+@
+
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+  \item True.
+  \item False.
+  \item False.
+  \item False.
+  \item False.
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{10000}
+\exname{Q.1}
+\exshuffle{TRUE}
+

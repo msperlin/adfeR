@@ -1,0 +1,58 @@
+<<echo=FALSE, results=hide>>=
+#library(fGarch)
+library(tidyverse)
+
+f.in <- afedR::afedR_get_data_file('SP500_comp_long_2014-10-17_2019-10-16.rds')
+df.stocks <- readr::read_rds(f.in)
+
+unique.stocks <- unique(df.stocks$ticker)
+my.rnd.stock <- sample(unique.stocks, 1)
+
+temp.df <- df.stocks %>%
+  dplyr:::filter(ticker == my.rnd.stock)
+
+df.est <- timeSeries::as.timeSeries(na.omit(temp.df))
+
+my.garchfit <- fGarch::garchFit(data = df.est,
+                        formula = ret.adjusted.prices ~ arma(1,1) + garch(1,1),
+                        trace = FALSE)
+
+sol.q <- coef(my.garchfit)['alpha1']
+
+my.answers <- format(afedR::afedR_gen_rnd_vec()*sol.q, digits = 4)
+
+if (lan == 'en') {
+  question.1 <- paste0('Using package fGarch, estimate a ARMA(1,1)-GARCH(1,1) model for the returns of stock ', my.rnd.stock, ', available in file \\verb|', basename(f.in), '|. What is the value of the ARCH coefficient (alpha1)?')
+
+}
+
+@
+
+\begin{question}
+
+<<echo=False, results=tex>>=
+cat(paste(question.1,collapse = ""))
+@
+
+<<echo=FALSE, results=tex>>=
+exams::answerlist(my.answers)
+@
+
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+  \item True.
+  \item False.
+  \item False.
+  \item False.
+  \item False.
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{10000}
+\exname{Q.1}
+\exshuffle{TRUE}
+

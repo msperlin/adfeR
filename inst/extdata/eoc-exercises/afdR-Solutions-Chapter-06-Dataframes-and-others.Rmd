@@ -1,0 +1,153 @@
+---
+title: "Analyzing Financial and Economic Data with R"
+author: "Marcelo S. Perlin"
+date: "`r Sys.Date()`"
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+subtitle: "Chapter 06 - Dataframes and other objects"
+---
+
+```{r setup, include=FALSE}
+book.site <- 'https://www.msperlin.com/blog/publication/2017_book-pafdr-en/'
+book.site.zip <- 'https://www.msperlin.com/blog/files/pafdr%20files/Code_Data_pafdR.zip'
+
+knitr::opts_chunk$set(message = FALSE)
+```
+
+
+## Exercises
+
+**01. Use functions from the `tibble` package to create a dataframe called `my_df` with a column named `x` containing a randomized selection (see function `sample`) of a sequence from 1 to 100 and another column named `y` with the value of column x plus 5. How many values in column `y` are greater than 10 and less than 25?**
+
+```{r}
+set.seed(1)
+
+my_df <- tibble::tibble(x = sample(1:100), 
+                        y = x + 5)
+
+# solution
+sum((my_df$y > 10)&(my_df$y < 25))
+```
+
+
+**02. Using operator `$`, create a new column named `cumsum_x` in `my_df`, which will contain the cumulative sum of `x` (see `cumsum` function). How many values of the new column `cumsum_x` are greater than 50?**
+
+```{r}
+my_df$cumsum_x <- cumsum(my_df$x)
+
+# solution
+sum(my_df$cumsum_x > 50)
+```
+
+
+**03. Use function `dplyr::filter` and the _pipeline_ operator to filter `my_df`, so it only keeps rows where the value of column `x` is greater than 30.**
+
+```{r}
+library(tidyverse)
+
+my_df <- my_df %>%
+  filter(x > 30)
+
+glimpse(my_df)
+```
+
+
+**04. If not done yet, repeat exercises 1, 2 and 3 using the `tidyverse` functions and the _pipeline_ operator to chain all operations.**
+
+```{r}
+library(tidyverse)
+
+set.seed(1)
+
+my_df <- tibble(x = sample(1:100),
+                y = x + 5)
+
+# solution 01
+n_cases <- my_df %>%
+  filter(x > 10, 
+         x < 25) %>%
+  nrow()
+
+print(n_cases)
+
+# solution 02
+n_cases <- my_df %>%
+  mutate(cumsum_x = cumsum(x)) %>%
+  filter(cumsum_x > 50) %>%
+  nrow()
+
+
+```
+
+
+**05. Use package `BatchGetSymbols` to download Facebook (FB) stock data since `'2010-01-01'` until today. If an investor bought `r format.cash(1000)` worth of FB stock on the first available day after `'2010-01-01'`, what would be the value of his portfolio today?**
+
+```{r}
+library(BatchGetSymbols)
+library(tidyverse)
+
+df_prices <- BatchGetSymbols(tickers = 'FB', first.date = '2010-01-01',
+                         last.date = Sys.Date())[[2]]
+
+value_purchase <- 1000
+
+# solution
+total_cash_return <- last(df_prices$price.adjusted)/first(df_prices$price.adjusted)*value_purchase
+
+my_msg <- paste0('The investor would have a portfolio worth of ', 
+                 total_cash_return, ' today.')
+
+cat(my_msg)
+```
+
+**06. Use function `afedR::afedR_get_data_file` to find the path of the book file `'grunfeld.csv'`. After reading it with `readr::read_csv`, use functions `dplyr::glimpse` and `base::summary` to better understand the content of the imported dataset.**
+
+```{r}
+my_file <- afedR::afedR_get_data_file('grunfeld.csv')
+
+df_grunfeld <- read_csv(my_file, 
+                        col_types = cols())
+
+# solution
+glimpse(df_grunfeld)
+
+summary(df_grunfeld)
+```
+
+
+**07. Create a list object with three dataframes in its contents, `df1`,` df2` and `df3`. The content and size of dataframes is your choice. Use `sapply` function to discover the number of rows and columns in each dataframe.**
+
+```{r}
+df1 <- tibble(x = 1:10)
+df2 <- tibble(y = runif(100))
+df3 <- tibble(z = rnorm(150),
+              m = rnorm(150))
+
+my_l <- list(df1, df2, df3)
+
+my_fct <- function(df_in) {
+  out <- c('nrows' = nrow(df_in), 
+           'ncols' = ncol(df_in))
+  return(out)
+}
+
+tab <- sapply(my_l, my_fct)
+tab
+```
+
+
+**08. Create an identity matrix (value 1 diagonally, zero anywhere else) of size 3 X 3. Tip: Use function  `diag` to set the diagonal values in the matrix. **
+
+```{r}
+my_size <- 3
+M_identity <- matrix(0, 
+                     nrow = my_size, 
+                     ncol = my_size)
+
+# solution
+diag(M_identity) <- 1
+
+print(M_identity)
+```

@@ -1,0 +1,53 @@
+<<echo=FALSE, results=hide>>=
+require(tidyverse)
+
+my_footbal_file <- afedR::afedR_get_data_file('Brazil_footbal_games.csv')
+df <- readr::read_csv(my_footbal_file, col_types = readr::cols(),
+                      locale = locale(encoding = 'Latin1'))
+
+my.perc <- 1
+
+rnd.idx <- sample(1:nrow(df))[1:floor(my.perc*nrow(df))]
+rnd.df <<- df[rnd.idx, ]
+
+rnd.df$GolsBR <- as.numeric(rnd.df$GolsBR)
+rnd.df$GolsAdv <- as.numeric(rnd.df$GolsAdv)
+
+q.sol <- sum(rnd.df$GolsBR, na.rm = T)
+rnd.vec <- afedR::afedR_gen_rnd_vec()
+
+my.answers <- format(floor(rnd.vec*q.sol), digits = 4)
+@
+
+\begin{question}
+
+Read the data in file \verb|\Sexpr{basename(my_footbal_file)}|, which contains information about football games of the brazilian national team taken from Google.
+
+After loading up the dataset, what is the sum of all values in column GolsBr?
+
+\begin{answerlist}
+\item \Sexpr{my.answers[1]}
+\item \Sexpr{my.answers[2]}
+\item \Sexpr{my.answers[3]}
+\item \Sexpr{my.answers[4]}
+\item \Sexpr{my.answers[5]}
+\end{answerlist}
+
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+\item True.
+\item False.
+\item False.
+\item False.
+\item False.
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{10000}
+\exname{Q.1}
+\exshuffle{TRUE}
+

@@ -1,0 +1,85 @@
+<<echo=FALSE, results=hide>>=
+library(fGarch)
+library(purrr)
+
+my.T <- 500
+n.sim <- 1000
+
+my.spec <- garchSpec(model = list(ar = 0.15, ma = -0.15,
+                                  omega = 0.0001, alpha = 0.1,
+                                  beta = 0.7), cond.dist = 'norm'  )
+
+my.coef <- coef(my.spec)
+
+my.sim.fct <- function(i.sim, my.spec) {
+
+  sim.garch <- garchSim(spec = my.spec, n = my.T)
+
+  return(data_frame(i.sim = i.sim,
+                    i.time = 1:length(sim.garch),
+                    y = sim.garch$garch))
+
+}
+
+my.seed <- sample(1:100, 1)
+set.seed(my.seed)
+df.sim <- bind_rows(lapply(X = 1:n.sim, FUN = my.sim.fct, my.spec = my.spec))
+
+my.idx <- sample(5:my.T, 1)
+
+sol.q <- max(df.sim$y[df.sim$i.time == my.idx])
+
+my.answers <- format(afedR::afedR_gen_rnd_vec()*sol.q, digits = 4)
+
+if (lan == 'en') {
+  question.1 <- paste0('Consider the following ARMA-GARCH process:')
+
+  question.2 <- paste0('Using set.seed = ', my.seed, ', do ', n.sim, ' simulations of the process for ', my.T, ' time periods. Looking at the simulated value at time ', my.idx, ' for all simulations, what is the maximum found value across all simulations?' )
+}
+
+@
+
+\begin{question}
+
+<<echo=False, results=tex>>=
+cat(paste(question.1,collapse = ""))
+@
+
+\begin{equation}
+y _t =   + \Sexpr{my.coef['ar']} y_{t-1} + \Sexpr{my.coef['ma']} \epsilon_{t-1} + \epsilon _t
+\end{equation}
+
+\begin{equation}
+\epsilon _t \sim N \left(0, h _t \right )
+\end{equation}
+
+\begin{equation}
+h _t = \Sexpr{my.coef['omega']} + \Sexpr{my.coef['alpha']} \epsilon ^2 _{t-1}+ \Sexpr{my.coef['beta']} h_{t-1}
+\end{equation}
+
+<<echo=False, results=tex>>=
+cat(paste(question.2,collapse = ""))
+@
+
+<<echo=FALSE, results=tex>>=
+exams::answerlist(my.answers)
+@
+
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+  \item True.
+  \item False.
+  \item False.
+  \item False.
+  \item False.
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{10000}
+\exname{Q.1}
+\exshuffle{TRUE}
+

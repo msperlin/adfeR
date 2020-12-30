@@ -1,0 +1,54 @@
+<<echo=FALSE, results=hide>>=
+f.in <- afedR::afedR_get_data_file('SP500_comp_long_2014-10-17_2019-10-16.rds')
+df.stocks <- readr::read_rds(f.in)
+
+unique.stocks <- unique(df.stocks$ticker)
+my.rnd.stock <- sample(unique.stocks, 1)
+
+temp.df <- df.stocks %>%
+  dplyr::filter(ticker == my.rnd.stock)
+
+my.aut.spec <- forecast::auto.arima(y = temp.df$ret.adjusted.prices, ic = 'aic')
+
+sol.q <- my.aut.spec$arma[1]
+my.seq <- 0:5
+my.seq <- my.seq[my.seq != sol.q]
+
+my.answers <- c(sol.q, sample(my.seq, 4))
+
+if (lan == 'en') {
+  question.1 <- paste0('Using function forecast::auto.arima to estimate the best model for the adjusted ',
+                       'returns of stock ', my.rnd.stock, ' using the AIC criteria (see input \\textit{ic} in \\textit{auto.arima}). What is the optimal lag for the AR parameter?')
+
+}
+
+@
+
+\begin{question}
+
+<<echo=False, results=tex>>=
+cat(paste(question.1,collapse = ""))
+@
+
+<<echo=FALSE, results=tex>>=
+exams::answerlist(my.answers)
+@
+
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+\item True.
+\item False.
+\item False.
+\item False.
+\item False.
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{10000}
+\exname{Q.1}
+\exshuffle{TRUE}
+

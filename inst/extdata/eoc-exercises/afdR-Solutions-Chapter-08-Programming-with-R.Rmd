@@ -1,0 +1,232 @@
+---
+title: "Analyzing Financial and Economic Data with R"
+author: "Marcelo S. Perlin"
+date: "`r Sys.Date()`"
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+subtitle: "Chapter 08 - Programming and Data Analysis with R"
+---
+
+```{r setup, include=FALSE}
+book.site <- 'https://www.msperlin.com/blog/publication/2017_book-pafdr-en/'
+book.site.zip <- 'https://www.msperlin.com/blog/files/pafdr%20files/Code_Data_pafdR.zip'
+
+knitr::opts_chunk$set(message = FALSE)
+```
+
+
+## Exercises 
+
+**01. Create a function called `say_my_name` that uses a person's name as input and displays the text _Your name is ..._ in the prompt. It should return `TRUE` at the end of its execution. Within the scope of the function, use comments to describe the purpose of the function, its inputs, and outputs. **
+
+```{r}
+say_my_name <- function(name_in) {
+  # Print a single name in the prompt
+  #
+  # ARGS: name_in - Name to be printed
+  #
+  # RETURNS: TRUE, if sucessfull
+  
+  my_msg <- paste0('Your name is ', name_in)
+  
+  cat(my_msg)
+  
+  return(TRUE)
+}
+```
+
+
+**02. Considering the previous `say_my_name` function, implement a test code for the input. If its class is not `character,` an error is returned to the user. Likewise, make sure the input object has a length equal to one, and not a vector. Test your new function with the wrong inputs to make sure it catches it, as expected.**
+
+```{r, error=TRUE}
+say_my_name <- function(name_in) {
+  # Prints a single name in the prompt
+  #
+  # ARGS: name_in - Name to be printed
+  # RETURNS: TRUE, if sucessfull
+  
+  # check inputs
+  if (class(name_in) != 'character') {
+    stop('Class of input name_in is ', class(name_in), 
+         ' and not character!')
+  }
+  
+  if (length(name_in) > 1) {
+    stop('Input name_in has length ', length(name_in), 
+         ' and not 1 (this function only works for one name)!')
+  }
+  
+  
+  
+  my_msg <- paste0('Your name is ', name_in, '\n')
+  
+  cat(my_msg)
+  
+  return(TRUE)
+}
+
+# testing Ok
+say_my_name('Marcelo')
+
+# testing vector
+say_my_name(c('Richard', 'Michael'))
+
+# testing class
+say_my_name(1)
+```
+
+**03. Download a database of popular Canadian baby names from [CHHS Data](https://data.chhs.ca.gov/dataset/most-popular-baby-names-2005-current)^[https://data.chhs.ca.gov/dataset/most-popular-baby-names-2005-current]. Import the data into R and, using a _loop_, apply the `say_my_name` function to 15 random names from the database. Tip: In this case, you must manually download the data from the website.**
+
+```{r}
+library(tidyverse)
+
+# get CURRENT url from https://data.chhs.ca.gov/dataset/most-popular-baby-names-2005-current
+my_url <- 'https://data.chhs.ca.gov/dataset/4a8cb74f-c4fa-458a-8ab1-5f2c0b2e22e3/resource/2bb8036b-8ce5-42e2-98e0-85ee2dca4093/download/top25babynames-by-sex-2005-2017.csv'
+
+df_names <- read_csv(my_url, col_types = cols())
+
+my_names <- sample(df_names$Name, 15)
+
+for (i_name in my_names) {
+  
+  say_my_name(i_name)
+}
+
+```
+
+
+**04. Redo the previous exercise 3 using `sapply` and `purrr::map` commands.**
+
+```{r}
+# using sapply
+vec_out <- sapply(sample(df_names$Name, 15),
+                  say_my_name)
+
+# using purrr
+library(purrr)
+l_out <- map(sample(df_names$Name, 15),
+             say_my_name)
+```
+
+
+**05. Use package `BatchGetSymbols` to download values for the SP500 index (`^GSPC`), Ibovespa (`'^BVSP'`), FTSE (`'^FSTE'`) and Nikkei 225 (`'^N225'`) from `'2010-01-01'` to the current date. With the imported data, use a _loop_ to calculate average, maximum, and minimum return of each index over the analyzed period.**
+
+```{r}
+library(BatchGetSymbols)
+
+indexes <- c('^BVSP', '^GSPC', '^FTSE', '^N225')
+
+df_indices <- BatchGetSymbols(tickers = indexes, 
+                              first.date = '2010-01-01',
+                              last.date = Sys.Date())[[2]]
+
+tab <- tibble()
+for (index in indexes) {
+  
+  temp_df <- df_indices %>%
+    filter(ticker == index)
+  
+  avg_ret <- mean(temp_df$ret.adjusted.prices, 
+                  na.rm = TRUE)
+  max_ret <- max(temp_df$ret.adjusted.prices, 
+                 na.rm = TRUE)
+  min_ret <- min(temp_df$ret.adjusted.prices, 
+                 na.rm = TRUE)
+  
+  # save result
+  tab <- bind_rows(tab, tibble(index = index,
+                               mean_ret = avg_ret, 
+                               max_ret = max_ret, 
+                               min_ret = min_ret))
+  
+}
+
+print(tab)
+
+```
+
+
+**06. Redo the previous exercise using the `dplyr` package functions `group_by` and `summarise`.**
+
+```{r}
+tab_tidy <- df_indices %>%
+  group_by(ticker) %>%
+  summarise(mean_ret = mean(ret.adjusted.prices, na.rm = TRUE),
+            max_ret = max(ret.adjusted.prices, na.rm = TRUE),
+            min_ret = min(ret.adjusted.prices, na.rm = TRUE))
+
+print(tab_tidy)
+```
+
+
+**07. With the dataset of names from exercise 3, use functions `dplyr::group_by` and `dplyr::summarise` to build a table with the most popular names by year.**
+
+```{r}
+tab <- df_names %>%
+  group_by(YEAR) %>%
+  summarise(most_popular = Name[which.max(Count)])
+
+print(tab)
+```
+
+
+**08. CHALLENGE - In [Rstudio CRAN logs](http://cran-logs.rstudio.com/)^[http://cran-logs.rstudio.com/] you can find data regarding the download statistics for the base distribution of R in section _Daily R downloads_. Using your programming skills, import all available data for the current month, and aggregate it into a single file. Which country presents the highest download count for R? **
+
+```{r}
+# set function that will download the files
+read_cranlogs_files <- function(date_in) {
+  # Reads log files from http://cran-logs.rstudio.com/
+  #
+  # ARGS: date_in - date of log data
+  require(tidyverse)
+  require(lubridate)
+  
+  url_dl <- paste0('http://cran-logs.rstudio.com/', year(date_in), '/',
+                   date_in, '-r.csv.gz')
+  
+  cat('\nReading ', url_dl)
+  
+  df <- read_csv(url_dl, col_types = cols())
+  
+  return(df)
+}
+
+# find out the availabe data in url
+library(rvest)
+library(lubridate)
+
+available_links <- read_html('http://cran-logs.rstudio.com/') %>%
+  html_nodes('a') %>%
+  html_attr('href')
+
+# only keep links for R download (those with -r.csv.gz pattern)
+idx <- str_detect(available_links, '-r.csv.gz')
+r_links <- available_links[idx]
+
+# find out dates 
+dates_dls <- ymd(basename(r_links))
+max_date <- max(dates_dls)
+
+my_year <- lubridate::year(max_date)
+my_month <- lubridate::month(max_date)
+
+
+my_dates <- seq(as.Date(paste0(my_year, '-', 
+                               my_month, '-01')), 
+                Sys.Date(), 
+                by = '1 day')
+
+library(purrr) 
+library(tidyverse)
+
+l_out <- map(my_dates, 
+             safely(read_cranlogs_files, 
+                    otherwise = tibble())) # return empty tibble in case of error
+
+df_cranlogs <- bind_rows(map(l_out, 'result'))
+
+# solution 
+tail(sort(table(df_cranlogs$country)))
+```

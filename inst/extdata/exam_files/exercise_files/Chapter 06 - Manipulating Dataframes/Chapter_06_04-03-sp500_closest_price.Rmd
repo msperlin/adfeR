@@ -1,0 +1,39 @@
+```{r data generation, echo = FALSE, results = "hide"}
+my.f.df.stocks <- afedR::afedR_get_data_file('SP500_comp_long_2014-10-17_2019-10-16.rds')
+df.stocks <- readr::read_rds(my.f.df.stocks)
+
+unique.tickers <- unique(df.stocks$ticker)
+
+rnd.ticker <- sample(unique.tickers, 1)
+
+df.single.stock <- df.stocks %>%
+  dplyr::filter(ticker == rnd.ticker)
+
+my.price <- sample(seq(floor(min(df.single.stock$price.adjusted)),
+                       floor(max(df.single.stock$price.adjusted)), by = 0.5),
+                   1)
+
+idx <- which.min(abs(df.single.stock$price.adjusted - my.price))
+sol.q <- df.single.stock$ref.date[idx]
+
+rnd.vec <- c(0, -25, 50, 6, 3)
+my.answers <- format(sol.q + rnd.vec , digits = 4)
+```
+
+Question
+========
+
+For this exercise, filter the raw stock table for ticker `r rnd.ticker`. Based on the resulting data, what is the date with the price of the stock most close to `r my.price`.
+
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(my.answers, markup = "markdown")
+```
+
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: t statistic
+exshuffle: TRUE

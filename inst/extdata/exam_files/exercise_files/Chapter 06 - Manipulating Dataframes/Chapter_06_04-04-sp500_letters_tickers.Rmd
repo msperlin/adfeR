@@ -1,0 +1,41 @@
+```{r data generation, echo = FALSE, results = "hide"}
+
+my.f.df.stocks <- afedR::afedR_get_data_file('SP500_comp_long_2014-10-17_2019-10-16.rds')
+df.stocks <- readr::read_rds(my.f.df.stocks)
+
+unique.tickers <- unique(df.stocks$ticker)
+
+tab_chars <- table(
+  do.call(c, stringr::str_split(unique.tickers, pattern = ''))
+)
+
+tab_chars <- tab_chars[tab_chars > 10]
+
+my.rnd.letter <- sample(names(tab_chars), 1)
+
+idx <- str_detect(unique.tickers, my.rnd.letter )
+
+sol.q <- sum(idx)
+
+rnd.vec <- c(0, sample(c(-seq(1, sol.q-1),
+                         seq(1, length(unique.tickers)- sol.q)), 4) )
+my.answers <- format(sol.q + rnd.vec , digits = 4)
+```
+
+Question
+========
+
+Using data for all stocks available in the raw table, how many stocks use the letter `r my.rnd.letter` in their ticker?
+
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(my.answers, markup = "markdown")
+```
+
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: t statistic
+exshuffle: TRUE

@@ -1,0 +1,59 @@
+<<echo=FALSE, results=hide>>=
+rnd.stock <- sample(my.df$ticker, 1)
+temp.df <- my.df[my.df$ticker == rnd.stock, ]
+
+my.weedays <- weekdays(temp.df$ref.date)
+temp.df$D <- (my.weedays == 'Monday') * temp.df$ret.mkt
+
+my.lm <- lm(temp.df, formula = 'ret.adjusted.prices ~ ret.mkt + D')
+
+sol.q <- coef(my.lm)[[3]]
+
+my.answers <- format(afedR::afedR_gen_rnd_vec()*sol.q, digits = 4)
+
+if (lan == 'en') {
+  question.1 <- paste0('Using the previously filtered data, estimate the following model for stock ', rnd.stock, '.')
+
+question.2 <- paste0('Where parameter $D_t$ is a dummy that takes value 1 if the weekday in time $t$ is monday and 0 otherwise. What is the value of $\\beta_2$?')
+
+}
+
+@
+
+\begin{question}
+
+<<echo=False, results=tex>>=
+cat(paste(question.1,collapse = ""))
+@
+
+
+\begin{equation}
+R_t = \alpha + (\beta _1 + \beta_2 D_t) R_{M,t} + \epsilon _t
+\end{equation}
+
+<<echo=False, results=tex>>=
+cat(paste(question.2,collapse = ""))
+@
+
+<<echo=FALSE, results=tex>>=
+exams::answerlist(my.answers)
+@
+
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+  \item True.
+  \item False.
+  \item False.
+  \item False.
+  \item False.
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{10000}
+\exname{Q.1}
+\exshuffle{TRUE}
+

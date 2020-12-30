@@ -1,0 +1,27 @@
+```{r data generation, echo = FALSE, results = "hide"}
+
+sol.q <- sum(df.answer$ret.before.date>0, na.rm = T)
+
+rnd.vec <- c(1, 0.2, 1.5, 1.8, 1.2)
+my.answers <- format(floor(rnd.vec*sol.q), digits = 4)
+
+```
+
+Question
+========
+
+Com base na tabela criada anteriormente, qual é a quantidade de retornos positivos do índice Ibovespa nas datas anteriores aos jogos da seleção?
+
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(my.answers, markup = "markdown")
+```
+
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: t statistic
+exshuffle: TRUE
+

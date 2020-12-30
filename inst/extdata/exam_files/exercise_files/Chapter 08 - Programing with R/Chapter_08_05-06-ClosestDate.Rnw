@@ -1,0 +1,46 @@
+<<echo=FALSE, results=hide>>=
+
+my.date <- Sys.Date()-365*sample(1:3,1)
+
+unique.matur <- unique(temp.df$matur.date)
+
+idx.max <- which.max(abs(my.date-unique.matur))
+idx.min <- which.min(abs(my.date-unique.matur))
+
+sol.q <- abs((unique.matur[idx.max] - unique.matur[idx.min])[[1]])
+
+rnd.vec <- afedR::afedR_gen_rnd_vec()
+my.answers <- format(floor(sol.q*rnd.vec), digits = 4)
+
+@
+
+\begin{question}
+
+Using the same maturity column, what is the absolute number of days between the date with least distance from \Sexpr{my.date} and the other date with the highest distance from the same date?
+
+\begin{answerlist}
+\item \Sexpr{my.answers[1]}
+\item \Sexpr{my.answers[2]}
+\item \Sexpr{my.answers[3]}
+\item \Sexpr{my.answers[4]}
+\item \Sexpr{my.answers[5]}
+\end{answerlist}
+
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+\item True.
+\item False.
+\item False.
+\item False.
+\item False.
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{10000}
+\exname{Q.1}
+\exshuffle{TRUE}
+

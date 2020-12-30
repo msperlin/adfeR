@@ -1,0 +1,39 @@
+<<echo=FALSE, results=hide>>=
+sol.q <- sum(sign(df.ibov$ret.adjusted.prices) == sign(lag(df.ibov$ret.adjusted.prices)),
+             na.rm = TRUE)
+
+rnd.vec <- afedR::afedR_gen_rnd_vec()
+my.answers <- format(floor(rnd.vec*sol.q) , digits = 4)
+
+@
+
+\begin{question}
+
+Considering the data for the Ibovespa index, how many times did the sign of the return series repeated itself?  That is, how many days you find where a previous positive (or negative) return  is followed by another positive (or negative) return.
+
+\begin{answerlist}
+  \item \Sexpr{my.answers[1]}
+  \item \Sexpr{my.answers[2]}
+  \item \Sexpr{my.answers[3]}
+  \item \Sexpr{my.answers[4]}
+  \item \Sexpr{my.answers[5]}
+\end{answerlist}
+
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+  \item True.
+  \item False.
+  \item False.
+  \item False.
+  \item False.
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{10000}
+\exname{Q.3}
+\exshuffle{TRUE}
+

@@ -1,0 +1,41 @@
+<<echo=FALSE, results=hide>>=
+
+sol.q <- min(my.coef[1,])
+
+my.answers <- format(afedR::afedR_gen_rnd_vec()*sol.q, digits = 8)
+
+if (lan == 'en') {
+  question.1 <- paste0('Using the information from the previous exercise, what is the minimum value of alpha for all ', n.stocks, ' stocks?')
+
+}
+
+@
+
+\begin{question}
+
+<<echo=False, results=tex>>=
+cat(paste(question.1,collapse = ""))
+@
+
+<<echo=FALSE, results=tex>>=
+exams::answerlist(my.answers)
+@
+
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+  \item True.
+  \item False.
+  \item False.
+  \item False.
+  \item False.
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{10000}
+\exname{Q.1}
+\exshuffle{TRUE}
+
