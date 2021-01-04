@@ -8,7 +8,7 @@
 #' @examples
 #'
 #' print(afedR_get_links_book())
-afedR_get_links_book <- function() {
+adfeR_get_links_book <- function() {
 
   my_l <- list(book_site = 'https://www.msperlin.com/blog/publication/2020_book-afedr-en/',
                book_site_zip = 'TODO',
@@ -32,7 +32,7 @@ afedR_get_links_book <- function() {
 #' \dontrun{
 #' flag <- afedR_get_book_files()
 #' }
-afedR_get_book_files <- function(path_to_copy = '~') {
+adfeR_get_book_files <- function(path_to_copy = '~') {
 
   if (!dir.exists(path_to_copy)) {
     stop(paste0('Path ', path_to_copy, ' does not exists. Perhaps create it ?'))

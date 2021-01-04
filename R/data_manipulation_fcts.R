@@ -8,7 +8,7 @@
 #'
 #' @examples
 #' x <- afedR_replace_outliers(runif(100))
-afedR_replace_outliers <- function(col_in, my_prob = 0.05) {
+adfeR_replace_outliers <- function(col_in, my_prob = 0.05) {
 
   # return if class is other than numeric
   if (!(class(col_in) %in% c('numeric', 'integer'))) return(col_in)
@@ -34,7 +34,7 @@ afedR_replace_outliers <- function(col_in, my_prob = 0.05) {
 #'
 #' @examples
 #' x <- afedR_replace_outliers(runif(100))
-afedR_replace_outliers_df <- function(df_in, my_prob = 0.05) {
+adfeR_replace_outliers_df <- function(df_in, my_prob = 0.05) {
 
   l_out <- purrr::map(df_in, afedR_replace_outliers, my_prob = my_prob)
 
@@ -56,7 +56,7 @@ afedR_replace_outliers_df <- function(df_in, my_prob = 0.05) {
 #'
 #' @examples
 #' print(afedR_calc_ret(1:10))
-afedR_calc_ret <- function(P,
+adfeR_calc_ret <- function(P,
                      tickers = rep('ticker', length(P))) {
   # calculates arithmetic returns from a vector of prices
   #

@@ -1,18 +1,18 @@
-Package: afedR
+Package: adfeR.ed3
 Type: Package
-Title: Data and Functions for Book "Analyzing Financial and Economical Data with R"
+Title: Data and Functions for Book "Analise de Dados Financeiros e Economicos com o R"
 Version: 0.1
-Date: 2019-11-01
+Date: 2021-03-01
 Author: Marcelo S. Perlin
 Maintainer: Marcelo S. Perlin <marceloperlin@gmail.com>
 Description: Includes functions for retrieving data files from the book, 
     copying other files and building exercises.
 License: GPL-2
 BugReports: https://github.com/msperlin/afedR/issues
-URL: https://github.com/msperlin/afedR/
+URL: https://github.com/msperlin/adfedR.ed3/
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.0.1
+RoxygenNote: 7.1.1
 Depends: R (>= 3.5.0)
 Imports: 
   utils,
