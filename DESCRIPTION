@@ -1,4 +1,4 @@
-Package: adfeR.ed3
+Package: adfeR
 Type: Package
 Title: Data and Functions for Book "Analise de Dados Financeiros e Economicos com o R"
 Version: 0.1
@@ -9,7 +9,7 @@ Description: Includes functions for retrieving data files from the book,
     copying other files and building exercises.
 License: GPL-2
 BugReports: https://github.com/msperlin/afedR/issues
-URL: https://github.com/msperlin/adfedR.ed3/
+URL: https://github.com/msperlin/adfedR/
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1

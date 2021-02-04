@@ -6,7 +6,7 @@ Inclui funções e arquivos relacionados ao livro "Análise de Dados Financeiros
 
 ```
 # only in github (will not pass cran checks)
-devtools::install_github('msperlin/afedR-pt-ed3')
+devtools::install_github('msperlin/adfeR.ed3')
 ```
 
 ## Example of usage
@@ -14,14 +14,14 @@ devtools::install_github('msperlin/afedR-pt-ed3')
 ### Listing available datasets
 
 ```
-adfeR.ed3::afedR_list_available_data()
+adfeR.ed3::list_available_data()
 ```
 
 ### Fetching data from book repository
 
 ```
 file_name <- 'SP500.csv'
-path_to_file <- adfeR.ed3::afedR_get_data_file(file_name)
+path_to_file <- adfeR.ed3::get_data_file(file_name)
 
 df <- readr::read_csv(path_to_file)
 ```
@@ -29,13 +29,13 @@ df <- readr::read_csv(path_to_file)
 ### Copying all book files to local directory
 
 ```
-flag <- adfeR.ed3::afedR_get_book_files(path_to_copy = '~')
+flag <- adfeR.ed3::get_book_files(path_to_copy = '~')
 ```
 
 ### Building html exams (testing)
 
 ```
-adfeR.ed3::afedR_build_exam(students_names = c('George', 'Michael'), 
+adfeR.ed3::build_exam(students_names = c('George', 'Michael'), 
                         chapters_to_include = 2,
                         dir_out = tempdir())
 ```

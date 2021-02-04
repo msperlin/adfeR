@@ -23,7 +23,7 @@
 #' afedR_build_exam(students_names = 'George', chapters_to_include = 2,
 #'                  dir_out = tempdir())
 #'  }
-adfeR_build_exam <- function(students_names,
+build_exam <- function(students_names,
                              students_ids = paste0('Exam ', 1:length(students_names)),
                              class_name = 'Sample class',
                              exercise_name = paste0('Sample Exercise'),
@@ -169,7 +169,7 @@ adfeR_build_exam <- function(students_names,
 #'                        n_q = 10, class_name = 'example class', exercise_name = 'sample',
 #'                        exam_links = NA)
 #' }
-adfeR_add_html_content <- function(f_in,
+add_html_content <- function(f_in,
                                    dir_out,
                                    student_name,
                                    student_version,
@@ -223,7 +223,7 @@ adfeR_add_html_content <- function(f_in,
 }
 
 
-afedR_grade_exam <- function(l_in) {
+grade_exam <- function(l_in) {
 
 }
 
@@ -240,7 +240,7 @@ afedR_grade_exam <- function(l_in) {
 #'
 #' @examples
 #' print(afedR_gen_rnd_vec())
-adfeR_gen_rnd_vec <- function(){
+gen_rnd_vec <- function(){
   rnd.vec.1 <- c(1, seq(runif(1,0.1,0.2), runif(1,0.7,0.8), length.out = 4))
   rnd.vec.2 <- c(1, seq(runif(1,1.1,1.2), runif(1,1.7, 1.8), length.out = 4))
   rnd.vec.3 <- c(1, seq(runif(1,0.25,0.5),runif(1,0.6,0.8), length.out = 2),

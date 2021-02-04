@@ -8,7 +8,7 @@
 #' @examples
 #'
 #' print(afedR_get_links_book())
-adfeR_get_links_book <- function() {
+get_links_book <- function() {
 
   my_l <- list(book_site = 'https://www.msperlin.com/blog/publication/2020_book-afedr-en/',
                book_site_zip = 'TODO',
@@ -32,15 +32,15 @@ adfeR_get_links_book <- function() {
 #' \dontrun{
 #' flag <- afedR_get_book_files()
 #' }
-adfeR_get_book_files <- function(path_to_copy = '~') {
+get_book_files <- function(path_to_copy = '~') {
 
   if (!dir.exists(path_to_copy)) {
     stop(paste0('Path ', path_to_copy, ' does not exists. Perhaps create it ?'))
   }
 
   # data files
-  data_path_files <- system.file('extdata/data', package = 'afedR')
-  data_path_to_copy <- file.path(path_to_copy, 'afedR files/data')
+  data_path_files <- system.file('extdata/data', package = 'adfeR.ed3')
+  data_path_to_copy <- file.path(path_to_copy, 'adfeR files/data')
 
   message('Copying data files files to ', data_path_to_copy)
 
@@ -55,8 +55,8 @@ adfeR_get_book_files <- function(path_to_copy = '~') {
   if (all(flag)) message(paste0('\t', length(flag), ' files copied'))
 
   # Slides
-  slides_path_files <- system.file('extdata/slides', package = 'afedR')
-  slides_path_to_copy <- file.path(path_to_copy, 'afedR files/slides')
+  slides_path_files <- system.file('extdata/slides', package = 'adfeR.ed3')
+  slides_path_to_copy <- file.path(path_to_copy, 'adfeR files/slides')
 
   message('Copying slides files files to ', slides_path_to_copy)
   if (!dir.exists(slides_path_to_copy)) dir.create(slides_path_to_copy,
@@ -71,8 +71,8 @@ adfeR_get_book_files <- function(path_to_copy = '~') {
   if (all(flag)) message(paste0('\t', length(flag), ' files copied'))
 
   # EOC exercises
-  eoc_exerc_path_files <- system.file('extdata/eoc-exercises', package = 'afedR')
-  eoc_exerc_path_to_copy <- file.path(path_to_copy, 'afedR files/eoc-exercises')
+  eoc_exerc_path_files <- system.file('extdata/eoc-exercises', package = 'adfeR.ed3')
+  eoc_exerc_path_to_copy <- file.path(path_to_copy, 'adfeR files/eoc-exercises')
 
   message('Copying end-of-chapter (eoc) exercises with solutions to ',
           eoc_exerc_path_to_copy)
@@ -88,8 +88,8 @@ adfeR_get_book_files <- function(path_to_copy = '~') {
   if (all(flag)) message(paste0('\t', length(flag), ' files copied'))
 
   # R code
-  r_code_path_files <- system.file('extdata/R-code', package = 'afedR')
-  r_code_exerc_path_to_copy <- file.path(path_to_copy, 'afedR files/R-code')
+  r_code_path_files <- system.file('extdata/R-code', package = 'adfeR.ed3')
+  r_code_exerc_path_to_copy <- file.path(path_to_copy, 'adfeR files/R-code')
 
   message('Copying end-of-chapter (eoc) exercises with solutions to ',
           r_code_exerc_path_to_copy)

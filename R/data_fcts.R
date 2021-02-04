@@ -9,9 +9,9 @@
 #'
 #' @examples
 #' df_data <- afedR_list_available_data()
-adfeR_list_available_data <- function(be_silent = FALSE) {
+list_available_data <- function(be_silent = FALSE) {
 
-  path_data <- system.file('extdata/data', package = 'afedR')
+  path_data <- system.file('extdata/data', package = 'adfeR.ed3')
 
   my_files <- list.files(path_data)
 
@@ -32,14 +32,14 @@ adfeR_list_available_data <- function(be_silent = FALSE) {
 #'
 #' @examples
 #' path_to_file <- afedR_get_data_file('grunfeld.csv')
-adfeR_get_data_file <- function(name_dataset) {
+get_data_file <- function(name_dataset) {
 
   #if (!(name_dataset %in% df_available$file_name)) {
     #stop('Cant find name ', name_dataset, ' in list of available tables.')
   #}
 
   path_out <- system.file(paste0('extdata/data/', name_dataset),
-                          package = 'afedR')
+                          package = 'adfeR.ed3')
 
   if (path_out == '') {
     stop('Cant find name ', name_dataset, ' in list of available tables.')
