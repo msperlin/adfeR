@@ -2,22 +2,18 @@
 #'
 #' This function will list all available datasets from the book. It also includes a description and origin, if applicable.
 #'
-#' @param be_silent Be silent?
-#'
 #' @return A dataframe with the data information
 #' @export
 #'
 #' @examples
 #' df_data <- afedR_list_available_data()
-list_available_data <- function(be_silent = FALSE) {
+list_available_data <- function() {
 
-  path_data <- system.file('extdata/data', package = 'adfeR.ed3')
+  path_data <- system.file('extdata/data', package = 'adfeR')
 
   my_files <- list.files(path_data)
 
-  if (!be_silent) print(my_files)
-
-  return(invisible(my_files))
+  return(my_files)
 }
 
 #' Get path to data file
@@ -39,7 +35,7 @@ get_data_file <- function(name_dataset) {
   #}
 
   path_out <- system.file(paste0('extdata/data/', name_dataset),
-                          package = 'adfeR.ed3')
+                          package = 'adfeR')
 
   if (path_out == '') {
     stop('Cant find name ', name_dataset, ' in list of available tables.')
