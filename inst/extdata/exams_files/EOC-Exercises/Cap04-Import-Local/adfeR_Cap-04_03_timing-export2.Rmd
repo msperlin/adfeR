@@ -1,0 +1,44 @@
+```{r datageneration, echo = FALSE, results = "hide"}
+my_answers <- c('S+', 
+                'C++',
+                'Python',
+                'Matlab',
+                'Javascript')
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Para o código anterior, redefina o valor de `my_N` para `1000000`. Esta mudança modifica as respostas das duas últimas perguntas?
+
+
+Solution
+================
+
+```{r, eval=FALSE}
+# do notice that this chunk requires the execution of previous solution
+my_N <- 1000000
+
+tab <- do_tests(my_N)
+print(tab)
+
+my_msg <- paste0('The format with largest disk space for N = ', my_N, ' is ', 
+                 tab$Result[which.max(tab$Size)], '.')
+
+message(my_msg)
+
+my_msg <- paste0('The format with least execution time for N = ', my_N, ' is ', 
+                 tab$Result[which.min(tab$Time)], '.')
+message(my_msg)
+```
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "timing export"
+exshuffle: TRUE
+

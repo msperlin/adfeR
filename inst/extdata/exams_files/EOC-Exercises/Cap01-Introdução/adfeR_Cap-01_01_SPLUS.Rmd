@@ -1,0 +1,31 @@
+```{r datageneration, echo = FALSE, results = "hide"}
+my_answers <- c('S', 
+                'C++',
+                'Python',
+                'Julia',
+                'Javascript')
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+A linguagem R foi desenvolvida com base em qual outra linguagem de programação?
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+Direto do livro: "O código base do R foi inspirado na linguagem S, inicialmente criada no laboratório da Bell/AT\&T por John Chambers e seus colegas".
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "S PLUS"
+exshuffle: TRUE
+

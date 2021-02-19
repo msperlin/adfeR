@@ -1,0 +1,41 @@
+```{r solution, echo = FALSE, results = "hide", cache=TRUE}
+my_link <- 'https://www.gutenberg.org/ebooks/2264.txt.utf-8'
+
+my_book <- readr::read_lines(my_link)
+
+# solution
+my_sol <- length(my_book)
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+my_answers <- make_random_answers(my_sol)
+
+#check_answers(my_answers)
+```
+
+
+Question
+========
+
+No endereço [https://www.gutenberg.org/files/1342/1342-0.txt](https://www.gutenberg.org/files/1342/1342-0.txt) é possível acessar um arquivo .txt contendo o texto integral do livro _Pride and Prejudice_ de Jane Austen. Utilize funções `download.file` e `readr::read_lines` para importar o livro inteiro como um vetor de caracteres chamado `my_book` no R. Quantas linhas o objeto resultante possui?
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+A solução é `r my_sol`. Rode o código abaixo para obter a solução:
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: num
+exsolution: `r my_sol`
+exname: "numeric "
+exshuffle: TRUE
+

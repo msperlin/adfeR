@@ -1,0 +1,37 @@
+```{r solution, echo = FALSE, results = "hide"}
+seq_2 <- seq(from = 0, 
+             to = 100, 
+             length.out = 1000)
+
+# solution
+my_sol <- sd(seq_2)
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+my_answers <- make_random_answers(my_sol)
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Defina outro objeto chamado `seq_2` contendo uma sequência de tamanho 1000, com valores entre 0 e 100. Qual é o desvio padrão (função `sd`) dessa sequência?
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "numeric "
+exshuffle: TRUE
+

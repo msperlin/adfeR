@@ -1,0 +1,48 @@
+```{r solution, echo = FALSE, results = "hide"}
+total_shares <- 100
+price_purchase <- 15
+
+total_purchase_value <- total_shares*price_purchase
+
+qtd_sell_1 <- 30
+price_sell_1 <- 18
+total_sell_1 <- qtd_sell_1*18
+
+qtd_sell_2 <- total_shares-qtd_sell_1
+price_sell_2 <- 22
+total_sell_2 <- qtd_sell_2*price_sell_2
+
+total_sell_value <- total_sell_1 + total_sell_2
+
+# solution
+my_sol <- total_sell_value - total_purchase_value
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+my_answers <- make_random_answers(my_sol, is_cash = TRUE)
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Vamos supor que, em certa data, você comprou `r total_shares` ações de uma empresa, a `price_purchase` reais por ação. Depois de algum tempo, você vendeu `r qtd_sell_1` ações por `r price_sell_1` reais cada e as `r qtd_sell_2` ações restantes foram vendidas por `r price_sell_2` reais em um dia posterior. Usando um _script_ em R, estruture este problema financeiro criando objetos numéricos. Qual é o lucro bruto desta transação no mercado de ações?
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "numeric 01"
+exshuffle: TRUE
+

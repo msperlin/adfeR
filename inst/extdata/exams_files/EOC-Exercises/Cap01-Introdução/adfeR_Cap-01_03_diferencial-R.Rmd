@@ -1,0 +1,32 @@
+```{r datageneration, echo = FALSE, results = "hide"}
+my_answers <- c('Facilita a análise de dados', 
+                'Facilidade de uso geral',
+                'Execução rápida de códigos',
+                'Facilita o desenvolvimento de aplicativos web',
+                'Desenvolvimento mobile')
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Qual o principal diferencial do R em relação a outras linguagens de programação, tal como Python, C++, javascript e demais?
+
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+Sem dúvida, o principal diferencial da linguagem R é a facilidade com que dados podem ser analisados na plataforma. Apesar de outras linguagens também possibilitarem a análise de dados, é no R onde esse processo é suportado por uma ampla gama de pacotes especializados. 
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "S PLUS"
+exshuffle: TRUE
+

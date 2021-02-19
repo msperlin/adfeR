@@ -1,0 +1,50 @@
+```{r solution, echo = FALSE, results = "hide", message=FALSE}
+library(BatchGetSymbols)
+
+ticker <- '^FTSE'
+
+first_date <- '2010-01-01'
+last_date <- '2021-01-01'
+
+df_FTSE_daily <- BatchGetSymbols(tickers = ticker, 
+                            first.date = first_date,
+                            last.date = last_date)[[2]]
+
+# change from daily to monthly
+df_FTSE_monthly <- df_FTSE_daily %>%
+  mutate(ref_month = format(ref.date, '%Y-%m-01')) %>%
+  group_by(ref_month) %>%
+  summarise_all(last)
+
+print(df_FTSE_monthly)
+
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+# none
+my_answers <- rep(NA, 5)
+```
+
+Question
+========
+
+Use os mesmos dados diários do FTSE e reconstrua os dados na frequência mensal, novamente utilizando a última observação do período.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "function 01"
+exshuffle: TRUE
+

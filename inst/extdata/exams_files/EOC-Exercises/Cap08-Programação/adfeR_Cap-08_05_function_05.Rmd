@@ -1,0 +1,74 @@
+```{r solution, echo = FALSE, results = "hide", message=FALSE, eval=FALSE}
+say_my_name <- function(name_in) {
+  # Prints a single name in the prompt
+  #
+  # ARGS: name_in - Name to be printed
+  # RETURNS: TRUE, if sucessfull
+  
+  # check inputs
+  if (class(name_in) != 'character') {
+    stop('Class of input name_in is ', class(name_in), 
+         ' and not character!')
+  }
+  
+  if (length(name_in) > 1) {
+    stop('Input name_in has length ', length(name_in), 
+         ' and not 1 (this function only works for one name)!')
+  }
+    
+  my_msg <- paste0('Your name is ', name_in, '\n')
+  
+  message(my_msg)
+  
+  # invisible makes sure the fct doesnt return anything if not output is set
+  return(invisible(TRUE))
+}
+
+library(tidyverse)
+library(purrr)
+
+# get CURRENT url from https://data.chhs.ca.gov/dataset/most-popular-baby-names-2005-current
+my_url <- 'https://data.brasil.io/dataset/genero-nomes/grupos.csv.gz'
+
+df_names <- read_csv(my_url, col_types = cols())
+
+# using sapply
+vec_out <- sapply(sample(df_names$name, 15),
+                  say_my_name)
+glimpse(vec_out)
+
+# using purrr
+l_out <- map(sample(df_names$name, 15),
+             say_my_name)
+glimpse(vec_out)
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+# none
+my_answers <- rep(NA, 5)
+
+```
+
+Question
+========
+
+Refaça o exercício anterior utilizando comandos `sapply` ou `purrr::map`.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "function 05"
+exshuffle: TRUE
+

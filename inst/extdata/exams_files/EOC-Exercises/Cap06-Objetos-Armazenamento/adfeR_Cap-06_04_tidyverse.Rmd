@@ -1,0 +1,64 @@
+```{r datageneration, echo = FALSE, results = "hide"}
+set.seed(1)
+
+my_df <- tibble::tibble(x = -100:100, 
+                        y = x + 5)
+
+# solution
+
+```
+
+Question
+========
+
+Caso não o tenha feito, repita os exercícios 1, 2 e 3 utilizando as funções do `tidyverse` e o operador de _pipeline_.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+#exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r, eval=FALSE}
+library(tidyverse)
+
+set.seed(1)
+
+my_df <- tibble(x = -100:100,
+                y = x + 5) %>%
+  mutate(cumsum_x = cumsum(x))
+
+# solution 01
+sol_01 <- my_df %>%
+  filter(x > 10, 
+         x < 25) %>%
+  nrow()
+
+# solution 02
+sol_02 <- my_df %>%
+  mutate(cumsum_x = cumsum(x)) %>%
+  filter(cumsum_x > -3500) %>%
+  nrow()
+
+# solution 03
+sol_03 <- my_df %>%
+  filter(y > 0) %>%
+  nrow()
+
+message(str_glue(
+  'Solution 01 = {sol_01} \n',
+  'Solution 02 = {sol_02} \n',
+  'Solution 03 = {sol_03}'
+  )
+)
+```
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "dataframe basic 04"
+exshuffle: TRUE
+

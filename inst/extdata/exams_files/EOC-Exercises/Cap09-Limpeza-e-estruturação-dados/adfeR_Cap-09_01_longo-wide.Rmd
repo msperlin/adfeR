@@ -1,0 +1,50 @@
+```{r solution, echo = FALSE, results = "hide", message=FALSE}
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+# none
+my_answers <- rep(0, 5)
+```
+
+Question
+========
+
+Considere o `dataframe` criado com o código a seguir:
+
+```{r, eval=FALSE}
+library(tidyverse)
+
+my_N <- 100
+
+df <- bind_rows(tibble(ticker = rep('STOCK 1', my_N),
+                       ref_date = Sys.Date() + 1:my_N,
+                       price = 100 + cumsum(rnorm(my_N))),
+                tibble(ticker = rep('STOCK 2', my_N),
+                       ref_date = Sys.Date() + 1:my_N,
+                       price = 100 + cumsum(rnorm(my_N))) )
+
+print(df)
+```
+
+O formato do `dataframe` é longo ou largo? Explique sua resposta.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+O formato é longo: temos dados empilhados para duas ações diferentes. Note que, com a adição de novas tickers, a tabela cresce com novas linhas. Novas variáveis podem ser facilmente adicionadas com novas colunas.
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "function 01"
+exshuffle: TRUE
+

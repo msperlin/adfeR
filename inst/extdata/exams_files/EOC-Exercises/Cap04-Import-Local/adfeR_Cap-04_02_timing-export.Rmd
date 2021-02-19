@@ -1,0 +1,34 @@
+```{r datageneration, echo = FALSE, results = "hide"}
+my_answers <- c('S+', 
+                'C++',
+                'Python',
+                'Matlab',
+                'Javascript')
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Melhore o código anterior com a mensuração do tempo de execução necessário para gravar os dados nos diferentes formatos. Qual formato teve a gravação mais rápida? Dica: use função `system.time` ou pacote `tictoc` para calcular os tempos de execução.
+
+
+Solution
+================
+
+```{r, eval=FALSE}
+# do notice that this chunk requires the execution of previous solution
+my_msg <- paste0('The format with least execution time for N = ', my_N, ' is ', 
+                 tab$Result[which.min(tab$Time)], '.')
+message(my_msg)
+```
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "timing export"
+exshuffle: TRUE
+

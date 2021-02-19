@@ -1,0 +1,46 @@
+```{r datageneration, echo = FALSE, results = "hide"}
+my_answers <- c('S+', 
+                'C++',
+                'Python',
+                'Matlab',
+                'Javascript')
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+No mesmo assunto do exercício anterior, liste todos os arquivos em todas as subpastas do diretório contendo os arquivos dos diferentes pacotes. Em média, quantos arquivos são necessários para cada pacote?
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r, eval=FALSE}
+r_pkg_folder <- Sys.getenv ('R_LIBS_USER')
+
+pkg_files <- list.files(r_pkg_folder, recursive = TRUE)
+my_dirs <- list.dirs(r_pkg_folder, recursive = FALSE)
+
+n_files <- length(pkg_files)
+n_dirs <- length(my_dirs)
+
+my_msg <- paste0('We have ', length(pkg_files), ' ',
+                 'files for ', length(my_dirs), ' packages. \n',
+                 'On average, there are ', n_files/n_dirs, ' files per directory.')
+
+message(my_msg)
+```
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "install pkgs"
+exshuffle: TRUE
+

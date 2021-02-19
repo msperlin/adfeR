@@ -1,0 +1,37 @@
+```{r solution, echo = FALSE, results = "hide"}
+my_df <- dplyr::tibble(x = -100:100, 
+                       y = x + 5)
+
+# solution
+library(tidyverse)
+
+my_df2 <- my_df %>%
+  filter(y > 0)
+
+# solution
+my_sol <- nrow(my_df2)
+```
+
+Question
+========
+
+Use função `dplyr::filter` e o operador de pipeline para filtrar `my_df`, mantendo apenas as linhas onde o valor da coluna `y` é maior que 0. Qual o número de linhas da tabela resultante?
+
+```{r questionlist, echo = FALSE, results = "asis"}
+#exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: num
+exsolution: `r my_sol`
+exname: "dataframe basic 03"
+exshuffle: TRUE
+

@@ -1,0 +1,36 @@
+```{r solution, echo = FALSE, results = "hide", eval=FALSE}
+library(GetTDData)
+
+download.TD.data(asset.codes = 'LTN')
+
+df_TD <- read.TD.files()
+
+my_td_asset <- 'LTN 010121'
+
+df_TD <- df_TD %>%
+  filter(asset.code == my_td_asset)
+
+my_sol <- min(df_TD$price.bid)
+```
+
+
+Question
+========
+
+Com base no pacote `GetTDData`, baixe dados para títulos do tipo LTN (Letras Financeiras do Tesouro). Qual o preço mais baixo para o título `r 'LTN 010121'`?
+
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "petrobras"
+exshuffle: TRUE
+

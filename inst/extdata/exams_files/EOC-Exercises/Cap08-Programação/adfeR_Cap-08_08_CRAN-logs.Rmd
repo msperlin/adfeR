@@ -1,0 +1,84 @@
+```{r solution, echo = FALSE, results = "hide", message=FALSE, cache=TRUE}
+# set function that will download the files
+read_cranlogs_files <- function(date_in) {
+  # Reads log files from http://cran-logs.rstudio.com/
+  #
+  # ARGS: date_in - date of log data
+  require(tidyverse)
+  require(lubridate)
+  
+  url_dl <- paste0('http://cran-logs.rstudio.com/', year(date_in), '/',
+                   date_in, '-r.csv.gz')
+  
+  cat('\nReading ', url_dl)
+  
+  df <- read_csv(url_dl, col_types = cols())
+  
+  return(df)
+}
+
+# find out the availabe dates in url
+library(rvest)
+library(lubridate)
+
+available_links <- read_html('http://cran-logs.rstudio.com/') %>%
+  html_nodes(css = 'a') %>%
+  html_attr('href')
+
+# only keep links for R download (those with -r.csv.gz pattern)
+idx <- str_detect(available_links, '-r.csv.gz')
+r_links <- available_links[idx]
+
+# find out dates 
+dates_dls <- ymd(basename(r_links))
+max_date <- max(dates_dls)
+
+first_date <- as.Date('2020-01-01')
+last_date <- as.Date('2020-01-15')
+
+my_dates <- seq(first_date, 
+                last_date, 
+                by = '1 day')
+
+library(purrr) 
+library(tidyverse)
+
+l_out <- map(my_dates, 
+             safely(read_cranlogs_files, 
+                    otherwise = tibble())) # return empty tibble in case of error
+
+df_cranlogs <- bind_rows(map(l_out, 'result'))
+
+# solution 
+my_sol <- names(sort(table(df_cranlogs$country), 
+               decreasing = TRUE)[1])
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+candidates <- unique(na.omit(df_cranlogs$country))
+my_answers <- make_random_answers(my_sol, candidates)
+```
+
+Question
+========
+
+No site do [Rstudio CRAN logs](http://cran-logs.rstudio.com/)^[http://cran-logs.rstudio.com/] você encontrará  dados sobre as estatísticas de download para a distribuição de base de R na seção _Daily R downloads_. Usando suas habilidades de programação, importe todos os dados disponíveis entre `r first_date` e `r last_date` e agregue-os em uma única tabela. Qual país apresenta a maior contagem de downloads do R? 
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "batchgetsymbols dplyr"
+exshuffle: TRUE
+

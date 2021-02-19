@@ -1,0 +1,50 @@
+```{r solution, echo = FALSE, results = "hide", message=FALSE}
+library(BatchGetSymbols)
+
+ticker <- '^GSPC'
+first_date <- '1950-01-01'
+last_date <- '2021-01-01'
+df_SP500 <- BatchGetSymbols(tickers = '^GSPC', 
+                            first.date = first_date,
+                            last.date = last_date)[[2]]
+
+select_n <- 5
+tab <- dplyr::tibble(position = 1:select_n,
+              top5_positive = sort(df_SP500$ret.adjusted.prices, 
+                                   decreasing = TRUE)[1:select_n],
+              top5_negative = sort(df_SP500$ret.adjusted.prices, 
+                                   decreasing = FALSE)[1:select_n])
+
+print(tab)
+
+my_sol <- sum(tab$top5_positive)
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+# none
+my_answers <- make_random_answers(my_sol)
+```
+
+Question
+========
+
+Utilize pacote `BatchGetSymbols` para baixar os dados do índice SP500 (`'^GSPC'`) desde `r first_date` até `r last_date`. Quais é a soma dos `r select_n` maiores retornos positivos do índice? 
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "function 01"
+exshuffle: TRUE
+

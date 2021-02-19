@@ -1,0 +1,67 @@
+```{r solution, echo = FALSE, results = "hide", message=FALSE}
+library(tidyverse)
+
+my_N <- 100
+
+df <- bind_rows(tibble(ticker = rep('STOCK 1', my_N),
+                       ref_date = Sys.Date() + 1:my_N,
+                       price = 100 + cumsum(rnorm(my_N))),
+                tibble(ticker = rep('STOCK 2', my_N),
+                       ref_date = Sys.Date() + 1:my_N,
+                       price = 100 + cumsum(rnorm(my_N))) )
+
+print(df)
+
+# convert from long to wide
+df_wide <- spread(data = df, 
+                  key = 'ticker',
+                  value = 'price')
+
+# print result
+print(df_wide)
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+# none
+my_answers <- rep(0, 5)
+```
+
+Question
+========
+
+Modifique o formato do `dataframe` anterior, de longo para largo ou vice-versa.
+
+```{r, eval=FALSE}
+library(tidyverse)
+
+my_N <- 100
+
+df <- bind_rows(tibble(ticker = rep('STOCK 1', my_N),
+                       ref_date = Sys.Date() + 1:my_N,
+                       price = 100 + cumsum(rnorm(my_N))),
+                tibble(ticker = rep('STOCK 2', my_N),
+                       ref_date = Sys.Date() + 1:my_N,
+                       price = 100 + cumsum(rnorm(my_N))) )
+
+print(df)
+```
+
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "function 01"
+exshuffle: TRUE
+

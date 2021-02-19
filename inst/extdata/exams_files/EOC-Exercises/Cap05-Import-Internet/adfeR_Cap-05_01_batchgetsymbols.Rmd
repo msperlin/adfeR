@@ -1,0 +1,40 @@
+```{r solution, echo = FALSE, results = "hide"}
+library(BatchGetSymbols)
+
+ticker <- 'MDIA3.SA'
+first_date <- '2019-01-01'
+last_date  <- '2020-01-01'
+
+df_prices <- BatchGetSymbols(tickers = ticker, 
+                             first.date = first_date, 
+                             last.date = last_date)[[2]]
+
+my_sol <- min(df_prices$price.close, 
+                 na.rm = TRUE)
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+my_answer <- make_random_answers(my_sol)
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Utilizando pacote `BatchGetSymbols`, baixe os dados diários da ação MDIA3 no _Yahoo Finance_ para o período entre 2019 e 2020. Qual o preço **não ajustado de fechamento (coluna `price.close`)** mais baixo no período analisado? Dica: todas ações brasileiras tem o prefixo ".SA" em seu ticker do Yahoo Finance. Portanto, as ações ordinárias da fabricante de massas MDias são representadas pelo símbolo MDIA3.SA.
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: num
+exsolution: `r my_sol`
+exname: "batchgetsymbols"
+exshuffle: TRUE
+

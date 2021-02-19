@@ -1,0 +1,52 @@
+```{r solution, echo = FALSE, results = "hide", cache=TRUE}
+library(GetDFPData2)
+library(tidyverse)
+
+my_company <- 'Petrobrás'
+
+search_company(my_company)
+
+my_id <- 9512
+my_year <- 2019
+
+l_dfp <- get_dfp_data(companies_cvm_codes = my_id, 
+                      type_format = 'con',
+                      first_year = my_year,
+                      last_year  = my_year)
+
+df_dre <- l_dfp$`DF Consolidado - Demonstração do Resultado` %>%
+  filter(DT_REFER == max(DT_REFER))
+
+# last profit
+acc_id <- "3.11"
+my_sol <- df_dre$VL_CONTA[df_dre$CD_CONTA == acc_id]
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+my_answers <- format_cash(make_random_answers(my_sol), type_cash = 'BRL') 
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Usando pacote `GetDFPData2`, baixe os demostrativos financeiros consolidados da empresa `r my_company` para o ano de `r my_year`. Qual foi o seu lucro líquido no final do exercício (x1000)? 
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "petrobras"
+exshuffle: TRUE
+

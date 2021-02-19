@@ -1,0 +1,55 @@
+```{r solution, echo = FALSE, results = "hide", message=FALSE, eval=FALSE}
+library(Rcpp)
+
+cppFunction('Rcpp::NumericVector sum_vectors_C(NumericVector x, NumericVector y) {
+  int n = x.size();
+  
+  Rcpp::NumericVector total(x.size());
+  
+  for(int i = 0; i < n; ++i) {
+    total[i] = x[i] + y[i];
+  }
+  return total;
+}')
+
+x <- runif(100)
+y <- runif(100)
+
+sol_C <- sum_vectors_C(x, y)
+sol_R <- x + y
+
+identical(sol_C, sol_R)
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+# none
+#my_answers <- make_random_answers(my_sol)
+my_answers <- rep(NA, 5)
+
+type_question <- 'string'
+ex_name <- 'otimizing 13-02'
+```
+
+Question
+========
+
+Use o pacote `Rcpp` para escrever e usar uma função em linguagem C++ que irá adicionar elementos dos vetores `x` e `y`, elemento por elemento. A saída deve ser outro vetor de mesmo tamanho e com elementos iguais a operação `x + y`. Use a função `identical` para testar se todos os elementos de ambos os vetores são iguais.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: `r type_question`
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: `r ex_name`
+exshuffle: TRUE
+

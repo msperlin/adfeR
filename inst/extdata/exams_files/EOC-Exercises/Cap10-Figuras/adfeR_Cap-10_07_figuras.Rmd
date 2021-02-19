@@ -1,0 +1,58 @@
+```{r solution, echo = FALSE, results = "hide", message=FALSE, eval=FALSE}
+library(BatchGetSymbols)
+library(tidyverse)
+
+df_ibov <- GetIbovStocks()
+
+my_tickers <- paste0(df_ibov$tickers, '.SA')
+
+future::plan(future::multisession, 
+             workers = floor(parallel::detectCores()/2))
+
+df_prices <- BatchGetSymbols(tickers = my_tickers, 
+                             first.date = '2015-01-01', 
+                             last.date = Sys.Date(),
+                             freq.data = 'yearly', 
+                             do.parallel = TRUE)[[2]]
+
+tab <- df_prices %>%
+  na.omit() %>%
+  group_by(ticker) %>%
+  summarise(mean = mean(ret.adjusted.prices),
+            sd = sd(ret.adjusted.prices))
+
+p <- ggplot(tab, aes(x = sd, y = mean)) + 
+  geom_point() + 
+  xlim(0, 0.5) + ylim(-0.5, 0.5)
+
+print(p)
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+# none
+my_answers <- rep(0, 5)
+```
+
+Question
+========
+
+Use a função `BatchGetSymbols::GetIbovStocks` para descobrir todos os tickers pertencentes ao índice Ibovespa atualmente. Usando `BatchGetSymbols`, baixe os dados de retorno anual para todas as ações do índice de 2015 até o dia atual. Depois disso, crie o mapa de média/variância plotando o retorno anual médio em relação ao seu desvio padrão. Dica: Use a opção paralela em `BatchGetSymbols` para acelerar a execução. Você encontrará muitos retornos discrepantes nos dados brutos. Certifique-se de que o gráfico esteja visível limitando os eixos x e y (consulte as funções `ggplot2::xlim` e` ggplot2::ylim`).
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "function 01"
+exshuffle: TRUE
+

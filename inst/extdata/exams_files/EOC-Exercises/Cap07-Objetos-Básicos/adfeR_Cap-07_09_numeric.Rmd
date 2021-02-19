@@ -1,0 +1,41 @@
+```{r solution, echo = FALSE, results = "hide", warning=FALSE}
+set.seed(10)
+x <- rnorm(n = 1000, mean = 10, sd = 10)
+
+my_group <- cut(x, 
+                breaks = c(-Inf, 15, Inf))
+
+# solution
+my_sol <- table(my_group)[1]
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+my_answers <- make_random_answers(my_sol)
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Usando `set.seed(10)`, crie um objeto chamado `x` com valores aleatórios da distribuição Normal com média igual a 10 e desvio padrão igual a 10. Usando função `cut`, crie outro objeto que defina dois grupos com base em valores de `x` maiores que 15 e menores que 15. Qual a quantidade de observações no primeiro grupo?
+
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: num
+exsolution: `r my_sol`
+exname: "numeric "
+exshuffle: TRUE
+

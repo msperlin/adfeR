@@ -1,0 +1,41 @@
+```{r solution, echo = FALSE, results = "hide", warning=FALSE}
+seq_1 <- seq(from = -10, to = 10, by = 2)
+seq_2 <- seq(from = 0, 
+             to = 100, 
+             length.out = 1000)
+
+# solution
+my_sol <- max(seq_1+seq_2)
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+my_answers <- make_random_answers(my_sol)
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Calcule a soma entre vetores `seq_1` e `seq_2` (veja exercícios anteriores). Esta operação funcionou apesar do tamanho diferente dos vetores? Explique sua resposta. Caso funcionar, qual o maior valor do vetor resultante? 
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+Sim, funcionou, mas com um aviso de _warning_: _ "o comprimento do objeto mais longo não é um múltiplo do comprimento do objeto mais curto" _. A explicação é que sempre que R encontra operações com vetor de tamanhos diferentes, ele usa a regra de reciclagem, onde o vetor mais curto é repetido quantas vezes forem necessárias para coincidir com o tamanho do vetor mais longo. No livro, veja seção sobre vetores numéricos para maiores detalhes.
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "numeric "
+exshuffle: TRUE
+

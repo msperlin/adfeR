@@ -4,10 +4,7 @@
 \alias{list_available_data}
 \title{List available datasets with description}
 \usage{
-list_available_data(be_silent = FALSE)
-}
-\arguments{
-\item{be_silent}{Be silent?}
+list_available_data()
 }
 \value{
 A dataframe with the data information

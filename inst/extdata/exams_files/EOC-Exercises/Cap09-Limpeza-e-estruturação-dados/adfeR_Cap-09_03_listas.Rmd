@@ -1,0 +1,60 @@
+```{r solution, echo = FALSE, results = "hide", message=FALSE}
+library(tidyverse)
+
+my_l <- list(df1 = tibble(x = 1:100, y = runif(100)),
+             df2 = tibble(x = 1:100, y = runif(100), v = runif(100)),
+             df3 = tibble(x = 1:100, y = runif(100), z = runif(100)) )
+
+# solution with bind_rows
+bind_df1 <- bind_rows(my_l)
+
+# solution with do.cal
+bind_df2 <- do.call(bind_rows, my_l)
+
+# check solutions match
+identical(bind_df1, bind_df2)
+
+print(bind_df1)
+# the missing data points were set as NA values
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+# none
+my_answers <- rep(0, 5)
+```
+
+Question
+========
+
+Considere a seguinte lista:
+
+```{r}
+library(tidyverse)
+
+my_l <- list(df1 = tibble(x = 1:100, y = runif(100)),
+             df2 = tibble(x = 1:100, y = runif(100), v = runif(100)),
+             df3 = tibble(x = 1:100, y = runif(100), z = runif(100)) )
+```
+
+Agrege todos `dataframes` em `my_l` para um objeto único usando funções `do.call` ou `dplyr::bind_rows`. O que aconteceu com os dados de `df1` onde colunas `v` e `z` não existem?
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+Quando `bind_rows` não encontra a mesma coluna na junção de tabelas diferentes, os dados faltantes são definidos como `NAs`. Veja a seguir:
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "function 01"
+exshuffle: TRUE
+

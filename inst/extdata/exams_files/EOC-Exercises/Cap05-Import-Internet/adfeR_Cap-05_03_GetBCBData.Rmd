@@ -1,0 +1,53 @@
+```{r, echo=FALSE}
+Sys.sleep(1)
+```
+
+
+
+```{r solution, echo = FALSE, results = "hide", cache=TRUE}
+library(GetBCBData)
+
+id_series <- '433'
+first_date <- '2010-01-01'
+last_date <- '2020-12-31'
+
+df_ipca <- gbcbd_get_series(id = id_series,
+                            first.date = first_date,
+                            last.date = last_date, 
+                            use.memoise = FALSE)
+
+my_sol <-  df_ipca$ref.date[which.max(df_ipca$value)]
+
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+possible_answers <- df_ipca$ref.date
+
+my_answers <- make_random_answers(my_sol, possible_answers)
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Utilize pacote `GetBCBData` para baixar dados do IPCA mensal entre `r first_date` e `r last_date`. Para os dados importados, qual é a data com o maior valor mensal de inflação?
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "bcb"
+exshuffle: TRUE
+

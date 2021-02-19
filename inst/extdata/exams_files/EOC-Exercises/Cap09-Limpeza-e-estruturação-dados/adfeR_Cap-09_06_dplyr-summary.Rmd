@@ -1,0 +1,49 @@
+```{r solution, echo = FALSE, results = "hide", message=FALSE}
+library(BatchGetSymbols)
+
+ticker <- '^FTSE'
+
+first_date <- '2010-01-01'
+last_date <- '2021-01-01'
+
+df_FTSE_daily <- BatchGetSymbols(tickers = ticker, 
+                            first.date = first_date,
+                            last.date = last_date)[[2]]
+
+# change from daily to annual
+df_FTSE_yearly <- df_FTSE_daily %>%
+  mutate(ref_year = lubridate::year(ref.date)) %>%
+  group_by(ref_year) %>%
+  summarise_all(.funs = last)
+
+print(df_FTSE_yearly)
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+# none
+my_answers <- rep(NA, 5)
+```
+
+Question
+========
+
+Use a função `BatchGetSymbols::BatchGetSymbols` para baixar os preços do índice FTSE (`'^FTSE'`) de `r first_date` até `r last_date`. Em seguida, reconstrua os dados na frequência anual, definindo cada valor do ano como sendo a última observação do período. Dica: veja a função `dplyr::summary_all` para uma forma funcional de agregar todas as colunas de um `dataframe`.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "function 01"
+exshuffle: TRUE
+

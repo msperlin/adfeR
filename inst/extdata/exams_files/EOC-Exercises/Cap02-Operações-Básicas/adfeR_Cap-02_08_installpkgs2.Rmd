@@ -1,0 +1,42 @@
+```{r datageneration, echo = FALSE, results = "hide"}
+my_answers <- c('S+', 
+                'C++',
+                'Python',
+                'Matlab',
+                'Javascript')
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Use função `install.packages` para instalar o pacote `BatchGetSymbols` no seu computador. Após a instalação, use função `BatchGetSymbols::BatchGetSymbols` para baixar dados de preços para a ação da Petrobrás -- PETR3 (PETR3.SA no Yahoo finance) -- nos últimos 15 dias. Dicas: 1) use função `Sys.Date()` para definir data atual e `Sys.Date() - 15` para calcular a data localizada 15 dias no passado; 2) note que a saída de `BatchGetSymbols` é uma lista, um tipo especial de objeto, e o que os dados de preços estão localizados no segundo elemento dessa lista.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+
+```{r, eval=FALSE}
+if (!require(BatchGetSymbols)) install.packages('BatchGetSymbols')
+
+l_out <- BatchGetSymbols(tickers = 'PETR3.SA',
+                         first.date = Sys.Date() - 15,
+                         last.date = Sys.Date())
+
+df_prices <- l_out[[2]]
+str(df_prices)
+```
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "install pkgs"
+exshuffle: TRUE
+

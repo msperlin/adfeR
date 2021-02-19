@@ -1,0 +1,36 @@
+```{r solution, echo = FALSE, results = "hide"}
+library(tidyverse)
+
+my_url <- 'https://eeecon.uibk.ac.at/~zeileis/grunfeld/Grunfeld.csv'
+
+df_grunfeld <- read_csv(my_url, col_types = cols())
+
+my_sol <- ncol(df_grunfeld)
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+my_answer <- make_random_answers(my_sol)
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+No link [https://eeecon.uibk.ac.at/~zeileis/grunfeld/Grunfeld.csv](https://eeecon.uibk.ac.at/~zeileis/grunfeld/Grunfeld.csv) você encontrará um arquivo _.csv_ para os dados _Grunfeld_. Esta é uma tabela particularmente famosa devido ao seu uso como dados de referência em modelos econométricos. Usando função `readr::read_csv`, leia este arquivo usando o link direto como entrada em `read_csv`. Quantas colunas você encontra no `dataframe` resultante?
+
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: num
+exsolution: `r my_sol`
+exname: "load csv"
+exshuffle: TRUE
+

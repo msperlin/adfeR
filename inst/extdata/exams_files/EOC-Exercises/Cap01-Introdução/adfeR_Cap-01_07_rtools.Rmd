@@ -1,0 +1,35 @@
+```{r datageneration, echo = FALSE, results = "hide"}
+my_answers <- c('Compilação de pacotes.', 
+                'Criar gráficos.',
+                'Fazer café (?).',
+                'Construir páginas na web.',
+                'Compilar relatórios técnicos!')
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+No [site](https://cloud.r-project.org/bin/windows/) de instalação do R no Windows é possível instalar também o aplicativo Rtools. Para que ele serve?
+
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+O Rtools é uma extensão do R particular ao Windows. Este serve para compilar pacotes a partir do código fonte e é um requisito para quem desenvolve pacotes. Para o usuário comum, porém, também recomenda-se a instalação do Rtools pois alguns pacotes requerem tal compilação.
+
+Para usuários do Linux/Unix ou MacOS, o Rtools não é necessário pois, geralmente, os compiladores já estão disponíveis pelo próprio sistema operacional.
+
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "S PLUS"
+exshuffle: TRUE
+

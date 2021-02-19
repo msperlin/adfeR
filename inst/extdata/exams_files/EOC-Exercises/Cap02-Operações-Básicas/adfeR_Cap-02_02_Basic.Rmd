@@ -1,0 +1,39 @@
+```{r datageneration, echo = FALSE, results = "hide"}
+my_answers <- c('S+', 
+                'C++',
+                'Python',
+                'Matlab',
+                'Javascript')
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+No _script_ criado anteriormente, use função `message` para mostrar a seguinte frase no _prompt_ do R: `"My name is ...."`.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r, eval=FALSE}
+x <- 36
+y <- 'Ricardo'
+
+message(paste0('My name is ', y))
+
+# press control+shift+enter to run this chunk of code in RStudio
+```
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "Basic"
+exshuffle: TRUE
+

@@ -1,0 +1,51 @@
+```{r datageneration, echo = FALSE, results = "hide"}
+my_answers <- c('S+', 
+                'C++',
+                'Python',
+                'Matlab',
+                'Javascript')
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Utilizando sua capacidade de programação, verifique no seu computador qual pasta, a partir do diretório de "Documentos" (atalho = `~`), possui o maior número de arquivos. Apresente na tela do R as cinco pastas com maior número de arquivos. 
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r, eval=FALSE}
+doc_folder <- '~' # 'C:/Users/USERNAME/Documents' in Windows
+                  # '/home/USERNAME/  in Linux
+
+fct_count_files <- function(dir_in) {
+  n_files <- list.files(dir_in, recursive = FALSE)
+  return(length(n_files))
+}
+
+# be aware this might take lots of time...
+all_folders <- fs::dir_ls(path = doc_folder, 
+                          type = 'directory', 
+                          recurse = TRUE)
+
+counter_files <- sapply(all_folders, fct_count_files)
+sorted <- sort(counter_files, decreasing = TRUE)
+
+message('\nThe five folders with highest number of files are:\n\n')
+message(paste0(names(sorted[1:5]), collapse = '\n'))
+```
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "install pkgs"
+exshuffle: TRUE
+

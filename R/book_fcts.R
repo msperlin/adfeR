@@ -10,8 +10,8 @@
 #' print(afedR_get_links_book())
 get_links_book <- function() {
 
-  my_l <- list(book_site = 'https://www.msperlin.com/blog/publication/2020_book-afedr-en/',
-               book_site_zip = 'TODO',
+  my_l <- list(book_site = 'https://www.msperlin.com/blog/publication/2021_book-adfer-pt/',
+               book_site_zip = 'https://www.msperlin.com/blog/files/adfer-files/adfeR-code-and-data.zip',
                blog_site = 'https://www.msperlin.com/blog')
 
   return(my_l)

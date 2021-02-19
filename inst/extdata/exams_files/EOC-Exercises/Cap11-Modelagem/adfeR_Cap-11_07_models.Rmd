@@ -1,0 +1,65 @@
+```{r solution, echo = FALSE, results = "hide", message=FALSE, eval=FALSE}
+library(BatchGetSymbols)
+library(tidyverse)
+
+tickers <- GetSP500Stocks()$Tickers
+first_date <- Sys.Date() - 3*365
+last_date  <- Sys.Date()
+
+df_stocks <- BatchGetSymbols(tickers = tickers, 
+                             first.date = first_date, 
+                             last.date = last_date)[[2]]
+
+library(dplyr)
+library(fGarch)
+
+tab_models <- df_stocks %>%
+  na.omit() %>%
+  group_by(ticker) %>%
+  do(my_garch = garchFit(formula = ~ arma(1,0) + garch(1,1), 
+                         data = .$ret.adjusted.prices, 
+                         trace = FALSE) ) 
+
+tab_models <- tab_models %>%
+  mutate(forecast_mean = predict(my_garch, 
+                                 n.ahead = 1)$meanForecast[1],
+         forecast_sd = predict(my_garch, 
+                               n.ahead = 1)$standardDeviation[1],
+         sharpe_index = forecast_mean/forecast_sd)
+
+glimpse(tab_models)
+
+# solution
+idx <- which.max(tab_models$sharpe_index)
+print(tab_models$ticker[idx])
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+# none
+#my_answers <- make_random_answers(my_sol)
+my_answers <- rep(NA, 5)
+```
+
+Question
+========
+
+No mesmo código utilizado na questão anterior, adicione uma nova coluna-lista com a estimação de um modelo ARMA(1,0)-GARCH(1,1) para os retornos de cada ação. Adicione outra coluna com a previsão de volatilidade (desvio padrão) em _t+1_. Ao dividir o retorno esperado calculado no item anterior pelo risco previsto, temos um índice de direção do mercado, onde aquelas ações com maior valor de índice apresentam maior retorno esperado por menor risco. Qual ação é mais atrativa e possui maior valor deste índice?
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "function 01"
+exshuffle: TRUE
+

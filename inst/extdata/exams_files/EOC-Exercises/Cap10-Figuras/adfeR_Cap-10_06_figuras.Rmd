@@ -1,0 +1,50 @@
+```{r solution, echo = FALSE, results = "hide", message=FALSE, eval=FALSE}
+library(BatchGetSymbols)
+
+tickers <- c('PETR4.SA', 
+             'VALE3.SA',
+             'GGBR4.SA') 
+
+df_stocks <- BatchGetSymbols(tickers = tickers, 
+                             first.date = Sys.Date() - 500,
+                             last.date = Sys.Date())[[2]]
+
+p <- ggplot(df_stocks, aes(x = ret.adjusted.prices)) + 
+  geom_histogram() + 
+  facet_wrap(~ticker)
+
+print(p)
+
+# save in temp folder
+my_file <- file.path(tempdir(), 'histograms.png')
+ggsave(filename = my_file, plot = p)
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+# none
+my_answers <- rep(0, 5)
+```
+
+Question
+========
+
+Para os dados anteriores, apresente o histograma dos retornos das diferentes ações em painéis diferentes e salve o resultado em um arquivo chamado `'histograms.png'`.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "function 01"
+exshuffle: TRUE
+

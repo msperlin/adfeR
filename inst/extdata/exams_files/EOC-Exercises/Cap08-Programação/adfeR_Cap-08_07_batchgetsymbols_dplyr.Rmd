@@ -1,0 +1,47 @@
+```{r solution, echo = FALSE, results = "hide", message=FALSE, eval=FALSE}
+library(BatchGetSymbols)
+
+indexes <- c('^BVSP', '^GSPC', '^FTSE', '^N225')
+
+df_indices <- BatchGetSymbols(tickers = indexes, 
+                              first.date = '2010-01-01',
+                              last.date = Sys.Date())[[2]]
+
+tab_tidy <- df_indices %>%
+  group_by(ticker) %>%
+  summarise(mean_ret = mean(ret.adjusted.prices, na.rm = TRUE),
+            max_ret = max(ret.adjusted.prices, na.rm = TRUE),
+            min_ret = min(ret.adjusted.prices, na.rm = TRUE))
+
+print(tab_tidy)
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+# none
+my_answers <- rep(NA, 5)
+
+```
+
+Question
+========
+
+Refaça o exercício anterior utilizando as funções `group_by` e `summarise`, ambas do pacote `dplyr`.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "batchgetsymbols dplyr"
+exshuffle: TRUE
+

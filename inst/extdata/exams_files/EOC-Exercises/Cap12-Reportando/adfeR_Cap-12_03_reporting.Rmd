@@ -1,0 +1,34 @@
+```{r solution, echo = FALSE, results = "hide", message=FALSE, eval=FALSE}
+
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+# none
+#my_answers <- make_random_answers(my_sol)
+my_answers <- rep(NA, 5)
+
+type_question <- 'string'
+ex_name <- '13 03'
+```
+
+Question
+========
+
+Crie um novo relatório em _Rmarkdown_ contemplando os dois exercícios anteriores. Compile o relatório em html e abra o mesmo no seu _browser_.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+Veja seção "Criando Relatórios com o _RMarkdown_" do capítulo. 
+
+Meta-information
+================
+extype: `r type_question`
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: `r ex_name`
+exshuffle: TRUE
+

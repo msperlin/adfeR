@@ -1,0 +1,44 @@
+```{r solution, echo = FALSE, results = "hide"}
+library(GetDFPData2)
+
+df_info <- get_info_companies() %>%
+  filter(SIT_REG == 'ATIVO')
+
+#glimpse(df_info)
+
+# Oldest company
+idx <- which.min(lubridate::dmy(df_info$DT_REG))
+my_sol <- df_info$DENOM_SOCIAL[idx]
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+possible_answers <- unique(df_info$DENOM_SOCIAL)
+
+my_answers <- make_random_answers(my_sol, possible_answers)
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Utilizando função `GetDFPData2::get_info_companies`, baixe informações sobre as ações negociadas na B3. Qual é a empresa **ativa** (veja coluna `SIT_REG`) mais antiga da amostra de acordo com sua data de registro (coluna `DT_REG`)?
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "bcb"
+exshuffle: TRUE
+

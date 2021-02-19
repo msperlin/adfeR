@@ -1,0 +1,24 @@
+```{r datageneration, echo = FALSE, results = "hide"}
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Caso trabalhe em uma instituição com infrainstrutura de dados, converse com o encarregado do IT e busque entender quais são as tecnologias empregadas. Verifique se, através do R, é possível ter acesso a todas tabelas dos bancos de dados. Por enquanto não existe necessidade de escrever código, ainda. Apenas verifique se esta possibilidade existe.
+
+
+Solution
+================
+
+Na universidade temos acesso a diferentes repositórios pagos para dados financeiros. Infelizmente, nenhum deles oferece algum tipo de API para comunicação com o R. De fato, este foi um dos motivadores para a escrita dos pacotes de obtenção de dados financeiros de forma gratuita.
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "Teconologias RStudio"
+exshuffle: TRUE
+

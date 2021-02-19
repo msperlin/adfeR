@@ -1,0 +1,38 @@
+```{r solution, echo = FALSE, results = "hide"}
+library(tidyverse)
+
+my_f <- adfeR::get_data_file('example_tsv.csv')
+
+df_tsv <- read_delim(my_f, delim = '\t', col_types = cols())
+
+my_sol <- nrow(df_tsv)
+
+#check_answers(my_answers)
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+my_answer <- make_random_answers(my_sol)
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Use função `adfeR::get_data_file` para acessar o arquivo `example_tsv.csv` no repositório de dados do livro. Note que as colunas dos dados estão separadas pelo símbolo de tabulação (`'\t'`). Após ler o manual do `readr::read_delim`, importe as informações deste arquivo para o seu computador. Quantas linhas o arquivo contém?
+
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: num
+exsolution: `r my_sol`
+exname: "load tsv"
+exshuffle: TRUE
+

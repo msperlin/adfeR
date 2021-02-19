@@ -1,0 +1,40 @@
+```{r datageneration, echo = FALSE, results = "hide"}
+my_answers <- c('S+', 
+                'C++',
+                'Python',
+                'Matlab',
+                'Javascript')
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Dentro do mesmo script, mostre o diretório atual de trabalho (veja função `getwd`, tal como em `print(getwd())`). Agora, modifique o seu diretório de trabalho para o _Desktop_ (_Área de Trabalho_) e mostre a seguinte mensagem na tela do _prompt_: `'My desktop address is ....'`. Dica: use e abuse da ferramenta _autocomplete_ do RStudio para rapidamente encontrar a pasta do _desktop_.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r, eval=FALSE}
+current_dir <- getwd()
+print(current_dir)
+
+new_dir <- '~/Desktop/' # this is probably C:/Users/USERNAME/Desktop for Windows
+setwd(new_dir)
+
+cat(paste0('My desktop address is ', getwd()))
+```
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "getwd"
+exshuffle: TRUE
+

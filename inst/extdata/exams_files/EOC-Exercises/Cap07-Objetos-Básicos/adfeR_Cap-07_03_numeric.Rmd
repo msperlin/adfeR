@@ -1,0 +1,37 @@
+```{r solution, echo = FALSE, results = "hide"}
+# solution
+seq_1 <- seq(from = -15, to = 10, by = 2)
+
+# solution
+my_sol <- sum(seq_1)
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+my_answers <- make_random_answers(my_sol)
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Utilizando o R, crie uma sequência em objeto chamado `seq_1` entre -15 e 10, onde o intervalo entre valores é sempre igual a 2. Qual o valor da soma dos elementos de `seq_1`?
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: num
+exsolution: `r my_sol`
+exname: "numeric "
+exshuffle: TRUE
+

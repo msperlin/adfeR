@@ -1,0 +1,80 @@
+```{r solution, echo = FALSE, results = "hide", message=FALSE, eval=FALSE}
+library(tidyverse)
+library(BatchGetSymbols)
+library(fGarch)
+library(profvis)
+
+# set temporary file for results
+profiling_file <-  tempfile(pattern = 'profiling_exercise', 
+                            fileext = '.out')
+
+# initialize profiling
+Rprof(filename = profiling_file)
+
+# run code
+profiling <- profvis(expr = {
+  ticker <- '^GSPC'
+  df_prices <- BatchGetSymbols(tickers = ticker, 
+                               first.date = '2000-01-01', do.cache = FALSE)[[2]]
+  
+  my_garch <- garchFit(formula = ret.adjusted.prices ~ arma(1,1) + garch(1,1), 
+                       data =  na.omit(df_prices) )
+})
+
+# create visualization
+temp_html <- tempfile(pattern = 'profile',
+                      fileext = '.html')
+
+htmlwidgets::saveWidget(profiling, temp_html)
+
+# open in browser from R
+browseURL(temp_html)
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+# none
+#my_answers <- make_random_answers(my_sol)
+my_answers <- rep(NA, 5)
+
+type_question <- 'string'
+ex_name <- 'otimizing 13-01'
+```
+
+Question
+========
+
+Considere o seguinte código:
+
+```{r, eval=FALSE}
+library(tidyverse)
+library(forecast)
+library(BatchGetSymbols)
+
+ticker <- '^GSPC'
+df_prices <- BatchGetSymbols(tickers = ticker, 
+                             first.date = '2010-01-01')[[2]]
+
+my_arima <- auto.arima(df_prices$ret.adjusted.prices)
+summary(my_arima)
+```
+
+Use funcões `Rprof` e `profvis` para identificar o gargalo do código. Qual número da linha que está tomando maior tempo de execução?
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: `r type_question`
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: `r ex_name`
+exshuffle: TRUE
+

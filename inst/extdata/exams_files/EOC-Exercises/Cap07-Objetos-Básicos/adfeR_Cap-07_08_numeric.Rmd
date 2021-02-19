@@ -1,0 +1,49 @@
+```{r solution, echo = FALSE, results = "hide", warning=FALSE}
+x <- 1:50
+y <- 50:1
+
+# solution using `base`
+z <- (y - c(NA, x[1:(length(x)-1)]))/c(NA, NA, y[1:(length(y)-2)])
+
+# solution with tidyverse (much prettier huh!)
+z <- (y - lag(x, n = 1))/lag(y, n = 2)
+
+# solution (be aware of the NA values)
+my_sol <- sum(z, na.rm = TRUE)
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+my_answers <- make_random_answers(my_sol)
+
+#check_answers(my_answers)
+```
+
+
+Question
+========
+
+Crie um vetor $z_i$ de acordo com a fórmula a seguir onde $x_i=1...50$ e $y_i=50...1$. Qual é o valor da soma dos elementos de $z_i$? Dica: veja o funcionamento da função `dplyr::lag`.
+
+$$
+z_i=\frac{y_i - x_{i-1}}{y_{i-2}}
+$$
+
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "numeric "
+exshuffle: TRUE
+

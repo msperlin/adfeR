@@ -1,0 +1,70 @@
+```{r solution, echo = FALSE, results = "hide", message=FALSE, eval=TRUE}
+set.seed(5)
+
+# number of obs
+n_row <- 100
+
+# set x as Normal (0, 1)
+x <- rnorm(n_row)
+
+# set coefficients
+my_alpha <- 1.5
+my_beta <- 0.5
+
+# build y
+y <- my_alpha + my_beta*x + rnorm(n_row)
+
+library(tidyverse)
+
+my_lm <- lm(formula = y ~ x, data = tibble(x, y))
+
+summary(my_lm)
+
+library(car)
+
+# set test matrix
+test_matrix <- matrix(c(my_alpha,  # alpha test value
+                        my_beta))  # beta test value
+
+# hypothesis matrix 
+hyp_mat <- matrix(c(1.5, 0,
+                    0  , 0.5),
+                  nrow = 2)
+
+# do test
+my_waldtest <- linearHypothesis(my_lm, 
+                                hypothesis.matrix = hyp_mat, 
+                                rhs = test_matrix)
+
+# print result
+my_sol <- my_waldtest$F[2]
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+# none
+my_answers <- make_random_answers(my_sol)
+```
+
+Question
+========
+
+Utilizando pacote `car`, teste a hipótese conjunta de que o valor de alpha é igual a 1.5 e beta igual a 0.5. Qual o valor do teste F resultante?
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "function 01"
+exshuffle: TRUE
+

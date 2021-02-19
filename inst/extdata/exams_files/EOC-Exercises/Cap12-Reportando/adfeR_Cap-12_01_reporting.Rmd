@@ -1,0 +1,56 @@
+```{r solution, echo = FALSE, results = "hide", message=FALSE, eval=FALSE}
+library(tidyverse)
+
+my_url <- 'https://eeecon.uibk.ac.at/~zeileis/grunfeld/Grunfeld.csv'
+
+df_grunfeld <- read_csv(my_url, col_types = cols())
+
+my_tab <- tibble(nrows = nrow(df_grunfeld),
+                 ncol = ncol(df_grunfeld),
+                 n_companies = length(unique(df_grunfeld$firm)),
+                 n_years = length(unique(df_grunfeld$year)))
+
+my_tab
+
+library(xtable)
+
+# Save to lates
+# save to temp file
+my_tex_file <- tempfile(pattern = 'table', fileext = '.tex')
+print(xtable(my_tab), file = my_tex_file)
+
+readr::read_lines(my_tex_file)
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+# none
+#my_answers <- make_random_answers(my_sol)
+my_answers <- rep(NA, 5)
+
+type_question <- 'string'
+ex_name <- 'reporting 12 01'
+```
+
+Question
+========
+
+Observe os dados disponíveis no arquivo `grunfeld.csv`. Importe os dados no R e monte uma tabela descritiva das variáveis. Essa tabela deve oferecer informações suficientes para o leitor entender os dados. Utilize pacote `xtable` para reportar a mesma no formato _LaTeX_ ou Word/Writer.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: `r type_question`
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: `r ex_name`
+exshuffle: TRUE
+

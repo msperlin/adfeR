@@ -1,0 +1,51 @@
+```{r solution, echo = FALSE, results = "hide", message=FALSE, eval=FALSE}
+library(BatchGetSymbols)
+library(tidyverse)
+
+tickers <- 'FB'
+
+df_FB <- BatchGetSymbols(tickers = tickers, 
+                         first.date = Sys.Date() - 500,
+                         last.date = Sys.Date())[[2]]
+
+p <- ggplot(df_FB, aes(x = ref.date, y = price.adjusted)) + 
+  geom_line() + 
+  labs(title = paste0('Preços para ', tickers) ,
+       subtitle = paste0('Dados de ', min(df_FB$ref.date), ' até ', 
+                         max(df_FB$ref.date)),
+       caption = "Solução para exercício 01, cap 10 - adfeR")
+
+print(p)
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+# none
+my_answers <- rep(0, 5)
+```
+
+Question
+========
+
+Baixe dados da ação CIEL3 com o pacote `BatchGetSymbols` para os últimos 500 dias. Apresente o gŕafico de linha do preço ajustado ao longo do tempo utilizando função `ggplot2::ggplot`. Tenha certeza que:
+
+- Eixos x e y estão corretamente nomeados
+- O gráfico tem um título ("Preços para CIEL3"), subtítulo ("Dados de YYYY-MM-DD até YYYY-MM-DD") e um _caption_ ("Solução para exercício 01, cap 10 - adfeR").
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "function 01"
+exshuffle: TRUE
+

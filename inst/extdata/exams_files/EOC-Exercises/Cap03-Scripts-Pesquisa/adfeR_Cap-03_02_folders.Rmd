@@ -1,0 +1,64 @@
+```{r datageneration, echo = FALSE, results = "hide"}
+my_answers <- c('S+', 
+                'C++',
+                'Python',
+                'Matlab',
+                'Javascript')
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Com base no estudo proposto anteriormente, crie uma estrutura de diretórios em seu computador para acomodar a pesquisa. Em um arquivo texto na pasta raiz da pesquisa, assinale arquivos fictícios para cada subdiretório (veja estrutura de diretórios no início da seção \@ref(diretorios)). Note que a criação dos diretórios pode ser realizada pelo próprio R.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r, eval=FALSE}
+library(fs)
+
+# set temp dir for solving exercise
+temp_dir <- path(tempdir(), 'Chapter 3 exercise')
+
+# create folder
+dir_create(temp_dir)
+
+# create files
+file_create(path(temp_dir, '01-import_data.R'))
+file_create(path(temp_dir, '02-clean_data.R'))
+file_create(path(temp_dir, '03-build_budget_table.R'))
+file_create(path(temp_dir, '04-build_investment_realstate_table.R'))
+file_create(path(temp_dir, '05-build_report.R'))
+
+# create dirs
+dir_create(path(temp_dir, 'data'))
+dir_create(path(temp_dir, 'tabs'))
+dir_create(path(temp_dir, 'figs'))
+
+# fill with files
+for (i_year in 2009:2019) {
+  file_create(path(temp_dir, 'data', 
+                   paste0('annual_budget_', i_year, '.xlsx')) )
+}
+
+file_create(path(temp_dir, 'data', 'fixed_income_index.csv'))
+file_create(path(temp_dir, 'data', 'real_state_data.rds'))
+file_create(path(temp_dir, 'figs', 'Income_and_HousePrices.png'))
+file_create(path(temp_dir, 'tabs',  'Table_with_Results.xlsx'))
+
+dir_tree(temp_dir)
+```
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "folders"
+exshuffle: TRUE
+

@@ -1,0 +1,39 @@
+```{r datageneration, echo = FALSE, results = "hide"}
+my_answers <- c('Encontrei os artigos!', 
+                'Ainda não fui',
+                'Talvez..',
+                'Não irei!',
+                'TLDR')
+
+check_answers(my_answers)
+```
+
+Question
+========
+
+Dirija-se ao site do [RBloggers](https://www.r-bloggers.com/)^[https://www.r-bloggers.com/] e procure por um tópico do seu interesse, tal como futebol (_soccer_) ou investimentos (_investments_). Leia pelo menos três artigos encontrados.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+Particularmente, sou apaixonado pelo esporte de tênis. No site do RBloggers encontrei os seguintes artigos misturando R e tennis:
+
+[Using R to study the evolution of Tennis](https://www.r-bloggers.com/2017/02/using-r-to-study-the-evolution-of-tennis/)
+
+[Visualizing Tennis Grand Slam Winners Performances](https://www.r-bloggers.com/2017/05/visualizing-tennis-grand-slam-winners-performances/)
+
+[Tennis Grand Slam Tournaments Champions Basic Analysis](https://www.r-bloggers.com/2017/12/tennis-grand-slam-tournaments-champions-basic-analysis/)
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "Teconologias RStudio"
+exshuffle: TRUE
+exwebex: 'testing'
+

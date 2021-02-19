@@ -1,0 +1,31 @@
+```{r datageneration, echo = FALSE, results = "hide"}
+my_answers <- c('Sim, vou procurar e ir', 
+                'Talvez..',
+                'Não irei!',
+                'Muito longe',
+                'Não me interessa')
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Use o [Google](https://www.google.com/search?q=R+groups+in+my+city) para pesquisar por grupos de R em sua região. Verifique se os encontros são frequentes e, caso não tiver um impedimento maior, vá para um desses encontros e faça novos amigos. 
+
+
+Solution
+================
+
+Não é incomum que programadores tenham certa tendência a introversão. Certamente este foi meu caso no início de carreira. Mas, saiba que timidez é um estado não-permanente, um mecanismo de defesa criado pela sua própria cabeça! Da mesma forma que melhorará em algum esporte quanto mais vezes o praticar, menos tímido será quanto mais vezes buscar se expressar. 
+
+A triste (ou não) realidade para os tímidos é que comunicação é parte fundamental do jogo profissional e é uma forma de manter uma rede de relacionamento. Quanto mais pessoas conhecerem o seu trabalho e sua personalidade, melhor. Talvez uma pessoa que conheceste em um desses grupos pode lhe indicar para vaga ou projeto futuro. Assim, resumindo, o que você realmente tem a perder indo a um desses encontros?
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "Encontro Grupos de R"
+exshuffle: TRUE
+

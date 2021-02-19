@@ -1,0 +1,36 @@
+```{r solution, eval=TRUE}
+my_df <- dplyr::tibble(x = -100:100, 
+                        y = x + 5)
+# solution
+my_sol <- sum((my_df$x > 10)&(my_df$x < 25))
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+my_answers <- make_random_answers(my_sol)
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Utilizando função `dplyr::tibble`, crie um `dataframe` chamado `my_df` com uma coluna chamada `x` contendo uma sequência de -100 a 100 e outra coluna chamada `y` com o valor da coluna x adicionada de 5. Para a tabela `my_df`, qual a quantidade de valores na coluna `x` maiores que 10 e menores que 25?
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: num
+exsolution: `r my_sol`
+exname: "dataframe basic"
+exshuffle: TRUE
+

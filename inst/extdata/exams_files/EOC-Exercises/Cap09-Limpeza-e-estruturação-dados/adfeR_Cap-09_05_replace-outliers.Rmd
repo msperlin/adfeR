@@ -1,0 +1,72 @@
+```{r solution, echo = FALSE, results = "hide", message=FALSE}
+library(BatchGetSymbols)
+library(purrr)
+
+ticker <- '^GSPC'
+first_date <- '1950-01-01'
+last_date <- '2021-01-01'
+df_SP500 <- BatchGetSymbols(tickers = '^GSPC', 
+                            first.date = first_date,
+                            last.date = last_date)[[2]]
+
+replace_outliers <- function(col_in, my_prob = 0.05) {
+  # Replaces outliers from a vector
+  #
+  # INPUTS: col_in The vector
+  #         my_prob Probability of quantiles (p and 1-p)
+  #
+  # OUTPUT: A vector
+  
+  # return if class is other than numeric
+  if (!(class(col_in) %in% c('numeric', 'integer'))) return(col_in)
+  
+  my_outliers <- stats::quantile(x = col_in,
+                                 probs = c(my_prob, 1-my_prob),
+                                 na.rm = TRUE)
+  
+  idx <- (col_in <= my_outliers[1])|(col_in >= my_outliers[2])
+  col_in[idx] <- NA
+  
+  return(col_in)
+  
+}
+
+# remove outlivers from vectors
+l_out <- map(df_SP500, replace_outliers, my_prob = 0.025)
+
+df_SP500_nooutlier <- na.omit(as_tibble(l_out))
+
+nrow_1 <- nrow(df_SP500)
+nrow_2 <- nrow(df_SP500_nooutlier)
+
+my_sol <- nrow_1 - nrow_2
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+# none
+my_answers <- make_random_answers(my_sol)
+```
+
+Question
+========
+
+Use função `replace_outliers` (veja seção \@ref(fct-replace)), criada neste capítulo, para remover _outliers_ de todas as colunas numéricas dos dados do SP500 importados anteriormente com `my_prob = 0.025`. Quantas linhas foram perdidas neste processo de limpeza?
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "function 01"
+exshuffle: TRUE
+

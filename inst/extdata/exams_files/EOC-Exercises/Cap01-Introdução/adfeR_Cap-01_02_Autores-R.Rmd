@@ -1,0 +1,31 @@
+```{r datageneration, echo = FALSE, results = "hide"}
+my_answers <- c('Ross Ihaka e Robert Gentleman', 
+                'John Chambers e Robert Engle',
+                'Roger Federer e Rafael Nadal',
+                'Guido van Rossum e Bjarne Stroustrup',
+                'Linus Torvalds e Richard Stallman')
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Qual o nome dos dois autores do R?
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+Direto do livro: "... Esse código foi reaproveitado por dois acadêmicos, **Ross Ihaka e Robert Gentleman**, resultando na plataforma de programação que temos hoje".
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "Autores do R"
+exshuffle: TRUE
+

@@ -1,0 +1,54 @@
+```{r solution, echo = FALSE, results = "hide", message=FALSE, eval=FALSE}
+library(Quandl)
+library(memoise)
+library(tictoc)
+
+mem_quandl <- memoise(f = Quandl, cache = cache_memory())
+
+id <- 'FRED/DDOE01USA086NWDB'
+
+tic('Using original Quandl')
+df <- Quandl(code = id)
+toc()
+
+tic('Using memoise version (first call)')
+df <- mem_quandl(code = id)
+toc()
+
+tic('Using memoise version (second call)')
+df <- mem_quandl(code = id)
+toc()
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+# none
+#my_answers <- make_random_answers(my_sol)
+my_answers <- rep(NA, 5)
+
+type_question <- 'string'
+ex_name <-  'otimizing 13-04'
+```
+
+Question
+========
+
+Use o pacote `memoise` para criar uma versão memorizada de `Quandl::Quandl`. Use a nova função para importar dados para o Índice de Preços ao Consumidor dos Estados Unidos (código `'FRED/DDOE01USA086NWDB'`). Quanto de ganho de velocidade em porcentagem você obtém da segunda chamada para a versão memorizada?
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: `r type_question`
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: `r ex_name`
+exshuffle: TRUE
+

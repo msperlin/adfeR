@@ -1,0 +1,51 @@
+```{r solution, echo = FALSE, results = "hide", message=FALSE, eval=FALSE}
+library(BatchGetSymbols)
+
+tickers <- c('PETR4.SA', 
+             'VALE3.SA',
+             'GGBR4.SA') 
+
+df_stocks <- BatchGetSymbols(tickers = tickers, 
+                             first.date = Sys.Date() - 500,
+                             last.date = Sys.Date())[[2]]
+
+p <- ggplot(df_stocks, aes(x = ref.date, 
+                           y = price.adjusted,
+                           color = ticker)) + 
+  geom_line() + 
+  labs(title = paste0('Preços para ', paste0(tickers, collapse = ', ')) ,
+       subtitle = paste0('Dados de ', min(df_FB$ref.date), ' até ', 
+                         max(df_FB$ref.date)),
+       caption = "Solução para exercício 01, cap 10 - adfeR")
+
+print(p)
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+# none
+my_answers <- rep(0, 5)
+```
+
+Question
+========
+
+Baixe dados das ações PETR3 (PETR3.SA), VALE3 (VALE3.SA), GGBR4 (GGBR4.SA)  com `BatchGetSymbols` para os últimos 1500 dias. Apresente, no mesmo gráfico, os preços das ações com diferentes cores de linhas. Mantenha todos demais aspectos do gráfico anterior.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "function 01"
+exshuffle: TRUE
+

@@ -1,0 +1,41 @@
+```{r solution, echo = FALSE, results = "hide"}
+df1 <- dplyr::tibble(x = 1:10)
+df2 <- dplyr::tibble(y = runif(100))
+df3 <- dplyr::tibble(z = rnorm(150),
+                     m = rnorm(150))
+
+my_l <- list(df1, df2, df3)
+
+my_fct <- function(df_in) {
+  out <- c('nrows' = nrow(df_in), 
+           'ncols' = ncol(df_in))
+  return(out)
+}
+
+tab <- sapply(my_l, my_fct)
+tab
+```
+
+Question
+========
+
+Crie um objeto do tipo lista com três `dataframes` em seu conteúdo, `df1`,  `df2` e `df3`. O conteúdo e tamanho dos `dataframes` é livre. Utilize função `sapply` para descobrir o número de linhas e colunas em cada `dataframe`.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+#exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "lists"
+exshuffle: TRUE
+

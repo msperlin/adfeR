@@ -1,0 +1,40 @@
+```{r solution, echo = FALSE, results = "hide"}
+library(tidyverse)
+
+my_f <- adfeR::get_data_file('funky_csv2.csv')
+
+df_funky <- read.table(file = my_f, 
+           dec = '?', 
+           skip = 7, 
+           sep = '|', 
+           header = TRUE)
+
+my_sol <- nrow(df_funky) + ncol(df_funky)
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+my_answer <- make_random_answers(my_sol)
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+No pacote do livro existe um arquivo de dados chamado `'funky_csv2.csv'`. Este possui um formato particularmente bizarro para os dados. Abra o mesmo em um editor de texto e procure entender como as colunas são separadas e qual o símbolo para o decimal. Após isso, veja as entradas da função `read.table` e importe a tabela na sessão do R. Caso somarmos o número de linhas com o número de colunas da tabela importada, qual o resultado?
+
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: num
+exsolution: `r my_sol`
+exname: "funky file"
+exshuffle: TRUE
+

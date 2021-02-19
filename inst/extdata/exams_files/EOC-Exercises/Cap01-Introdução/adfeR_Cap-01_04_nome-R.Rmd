@@ -1,0 +1,32 @@
+```{r solution, echo = FALSE, results = "hide"}
+my_answers <- c('Compartilhamento da letra R por seus autores.', 
+                'R = Reausable code.',
+                'Era a única letra ainda não usada como linguagem de programação.',
+                'A mãe de um dos autores se chamada Renata e, por isso, ele homenageou-a com o nome R.',
+                'Uma letra foi sorteada e o resultado foi R.')
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Qual a razão para o nome da linguagem de programação ser R?
+
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+A letra R foi escolhida devido ao seu uso na primeira letra dos dois autores da plataforma. 
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "S PLUS"
+exshuffle: TRUE
+

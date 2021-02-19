@@ -1,0 +1,41 @@
+```{r solution, echo = FALSE, results = "hide"}
+my_df <- dplyr::tibble(x = -100:100, 
+                       y = x + 5)
+
+# solution
+my_df$cumsum_x <- cumsum(my_df$x)
+
+# solution
+my_sol <- sum(my_df$cumsum_x > -3500)
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+my_answers <- make_random_answers(my_sol)
+
+#check_answers(my_answers)
+```
+
+
+Question
+========
+
+Crie uma nova coluna em `my_df` chamada `cumsum_x`, contendo a soma cumulativa de `x` (função `cumsum`). Desta nova coluna, quantos valores são maiores que -3500?
+
+```{r questionlist, echo = FALSE, results = "asis"}
+#exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: num
+exsolution: `r my_sol`
+exname: "dataframe basic 02"
+exshuffle: TRUE
+

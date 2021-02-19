@@ -1,0 +1,40 @@
+```{r solution, echo = FALSE, results = "hide"}
+library(tidyverse)
+
+my_f <- adfeR::get_data_file('SP500.csv')
+
+df_SP500 <- read_csv(my_f, 
+                     col_types = cols())
+
+my_msg <- paste0('There are ', nrow(df_SP500), ' rows and ', 
+                 ncol(df_SP500), ' columns in file ', basename(my_f))
+message(my_msg)
+
+my_sol <- nrow(df_SP500)
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+my_answer <- make_random_answers(my_sol)
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Use função `adfeR::get_data_file` para acessar o arquivo `SP500.csv` no repositório de dados do livro. Importe o conteúdo do arquivo no R com função  `readr::read_csv`. Quantas linhas existem no `dataframe` resultante?
+
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+Meta-information
+================
+extype: num
+exsolution: `r my_sol`
+exname: "load csv"
+exshuffle: TRUE
+

@@ -1,0 +1,44 @@
+```{r solution, echo = FALSE, results = "hide", cache=TRUE}
+b_day <- as.Date('2000-05-12')
+n_years <- 100
+
+b_day_vec <- seq(b_day, b_day + n_years*365, by = '1 year')
+
+w_days <- weekdays(b_day_vec)
+
+n_weekend <- sum(w_days %in% c('Saturday', 'Sunday'))
+
+# solution
+my_sol <- n_weekend
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+my_answers <- make_random_answers(my_sol)
+
+#check_answers(my_answers)
+```
+
+
+Question
+========
+
+Assumindo que uma pessoa nascida em `r b_day` irás viver for `r n_years` anos, qual é o número de dias de aniversário que cairão em um final de semana (sábado ou domingo)? Dica: use operador `%in%` para checar uma condição múltipla nos dados.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: num
+exsolution: `r my_sol`
+exname: "dates"
+exshuffle: TRUE
+

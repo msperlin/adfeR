@@ -1,0 +1,44 @@
+```{r solution, echo = FALSE, results = "hide", warning=FALSE}
+i <- 1:100
+
+x <- ( (-1)^(i+1) )/(2*i - 1)
+
+# solution
+my_sol <- sum(x)
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+my_answers <- make_random_answers(my_sol)
+
+#check_answers(my_answers)
+```
+
+
+Question
+========
+
+Crie um vetor x de acordo com a fórmula a seguir, onde $i=1...100$. Qual é o valor da soma dos elementos de x?
+
+$$
+x_i=\frac{-1^{i+1}}{2i-1}
+$$
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: num
+exsolution: `r my_sol`
+exname: "numeric "
+exshuffle: TRUE
+

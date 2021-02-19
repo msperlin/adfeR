@@ -1,0 +1,56 @@
+```{r solution, echo = FALSE, results = "hide"}
+library(tidyverse)
+
+text1 <- tibble(text = c('O R é uma plataforma de programação madura e estável;',
+                         'O R foi desenvolvido em 2018 e é um projeto inovador e instável;'),
+                sol = c(TRUE, FALSE))
+
+text2 <- tibble(text = c('O RStudio é uma interface ao R, aumentando a produtividade do analista;',
+                         'O RStudio é uma linguagem de programação alternativa ao R;'),
+                sol = c(TRUE, FALSE))
+
+text3 <- tibble(text = c('O R tem compatibilidade com diferentes linguagens de programação;',
+                         'O R não tem compatibilidade com diferentes linguagens de programação;'),
+                sol = c(TRUE, FALSE))
+
+l <- build_answers_text(text1,
+                        text2,
+                        text3)
+
+my_answers <- l$my_answers
+my_texts <- l$texts
+
+check_answers(my_answers)
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Sobre o R, considere as seguintes alternativas:
+
+I - `r my_texts[1]`
+
+II - `r my_texts[2]`
+
+III - `r my_texts[3]`
+
+Quais alternativas estão corretas?
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+Veja seção "Por que Escolher o R" no capítulo "Introdução".
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "S PLUS"
+exshuffle: TRUE
+

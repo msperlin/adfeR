@@ -1,0 +1,45 @@
+```{r solution, echo = FALSE, results = "hide", warning=FALSE}
+set.seed(15)
+my_char <- paste(sample(letters, 5000, replace = T), 
+                 collapse = '')
+
+my_split <- str_split(my_char, pattern = 'b')[[1]]
+
+# find number of characters in each
+n_chars <- sapply(my_split, nchar)
+
+# solution
+my_sol <- n_chars[which.max(n_chars)]
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+my_answers <- make_random_answers(my_sol)
+
+#check_answers(my_answers)
+```
+
+
+Question
+========
+
+Baseado no objeto `my_char` criado anteriormente, caso dividíssemos o mesmo em diversos pedaços menores utilizando a letra `"b"`, qual é o número de caracteres no **maior** pedaço encontrado?
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+A solução é `r my_sol`. Rode o código abaixo para obter a solução:
+
+```{r solution, eval=FALSE}
+```
+
+Meta-information
+================
+extype: num
+exsolution: `r my_sol`
+exname: "numeric "
+exshuffle: TRUE
+

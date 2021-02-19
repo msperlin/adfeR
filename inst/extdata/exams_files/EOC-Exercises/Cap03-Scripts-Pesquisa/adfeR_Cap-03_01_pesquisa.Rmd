@@ -1,0 +1,40 @@
+```{r datageneration, echo = FALSE, results = "hide"}
+my_answers <- c('S+', 
+                'C++',
+                'Python',
+                'Matlab',
+                'Javascript')
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Imagine uma pesquisa envolvendo a análise do seu orçamento doméstico ao longo do tempo. Dados estão disponíveis em planilhas eletrônicas separadas por mês, durante 10 anos. O objetivo da pesquisa é entender se é possível a compra de um imóvel daqui a cinco anos. A partir disso, detalhe em texto os elementos em cada etapa do estudo, desde importação dos dados até a construção do relatório.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+As possíveis etapas do estudo são:
+
+1) Importação 01: Importar todos os dados relativos à renda e orçamento familiar, taxa de retorno em investimentos -- renda fixa ou renda variável -- e históricos de preços de imóveis nos locais desejados;
+
+2) Limpeza 01: Limpe os dados para _outliers_ e dados faltantes (NA);
+
+3) Manipulação 01: Use os dados de renda pessoal para encontrar a necessidade de economia mensal para cada ano. 
+
+4) Manipulação 02: Com base nos retornos históricos dos investimentos em renda fixa/variável e na inflação do imóvel, verifique quantos anos leva para economizar a quantidade de dinheiro necessária para comprar o imóvel.
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "folders"
+exshuffle: TRUE
+

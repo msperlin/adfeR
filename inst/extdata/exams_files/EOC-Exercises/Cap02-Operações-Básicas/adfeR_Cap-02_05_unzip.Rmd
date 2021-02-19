@@ -1,0 +1,43 @@
+```{r datageneration, echo = FALSE, results = "hide"}
+my_answers <- c('S+', 
+                'C++',
+                'Python',
+                'Matlab',
+                'Javascript')
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Utilize a função `unzip` para descompactar o arquivo baixado na questão anterior para um diretório chamado `'adfeR-Files'` dentro da pasta do "Desktop". Quantos arquivos estão disponíveis na pasta resultante? Dica: use o argumento `recursive = TRUE` com `list.files` para procurar também todos subdiretórios disponíveis.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r, eval=FALSE}
+my_folder <- '~/Desktop/adfeR-Files' # this is probably C:/Users/USERNAME/Desktop for Windows
+unzip(local_file, exdir = my_folder) # local_file comes from previous exercise
+
+files <- list.files(my_folder, 
+                    full.names = TRUE, 
+                    recursive = TRUE)
+
+n_files <- length(files)
+
+message(paste0('There are ', n_files, ' files available at folder "', my_folder, '".'))
+```
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "unzip"
+exshuffle: TRUE
+

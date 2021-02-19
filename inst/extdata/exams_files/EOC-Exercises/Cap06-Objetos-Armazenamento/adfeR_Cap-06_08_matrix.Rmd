@@ -1,0 +1,35 @@
+```{r solution, echo = FALSE, results = "hide"}
+my_size <- 3
+M_identity <- matrix(0, 
+                     nrow = my_size, 
+                     ncol = my_size)
+
+# solution
+diag(M_identity) <- 1
+
+print(M_identity)
+```
+
+Question
+========
+
+Utilizando o R, crie uma matrix identidade (valor 1 na diagonal, zero em qualquer outro) de tamanho 3X3. Dica: use função `diag` para definir a diagonal da matrix.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+#exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "matrix"
+exshuffle: TRUE
+

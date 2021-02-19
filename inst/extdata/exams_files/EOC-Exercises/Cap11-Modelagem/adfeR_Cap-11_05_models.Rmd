@@ -1,0 +1,61 @@
+```{r solution, echo = FALSE, results = "hide", message=FALSE, eval=FALSE}
+library(BatchGetSymbols)
+library(tidyverse)
+
+tickers <- GetSP500Stocks()$Tickers
+first_date <- Sys.Date() - 3*365
+last_date  <- Sys.Date()
+
+df_stocks <- BatchGetSymbols(tickers = tickers, 
+                             first.date = first_date, 
+                             last.date = last_date)[[2]]
+
+df_sp500 <- BatchGetSymbols(tickers =  '^GSPC', 
+                            first.date = first_date, 
+                            last.date = last_date)[[2]]
+
+idx <- match(df_stocks$ref.date, df_sp500$ref.date)
+df_stocks$ret_mkt <- df_sp500$ret.closing.prices[idx]
+
+# calculate PLM beta
+library(plm)
+
+# estimate panel data model with fixed effects
+my_pdm <- plm(data = df_stocks, 
+              formula = ret.adjusted.prices ~ ret_mkt, 
+              model = 'within',
+              index = c('ticker'))
+
+# print result
+print(summary(my_pdm))
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+# none
+#my_answers <- make_random_answers(my_sol)
+my_answers <- rep(NA, 5)
+```
+
+Question
+========
+
+Para os dados importados anteriormente, estime uma versão em dados de painel para o modelo de mercado (beta). Nesta versão, cada ação possui um intercepto diferente, porém compartilham o mesmo beta. O beta estimado é significativo a 5%?
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "function 01"
+exshuffle: TRUE
+

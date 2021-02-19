@@ -1,0 +1,39 @@
+```{r datageneration, echo = FALSE, results = "hide"}
+my_answers <- c('S+', 
+                'C++',
+                'Python',
+                'Matlab',
+                'Javascript')
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Utilizando pacote `devtools`, instale a versão de desenvolvimento do pacote `ggplot2`, disponível no repositório de [Hadley Hickman](https://github.com/hadley). Carregue o pacote usando `library` e crie uma figura simples com o código `qplot(y = rnorm(10), x = 1:10)`.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r, eval=FALSE}
+if (!require(devtools)) install.packages("devtools")
+
+devtools::install_github('hadley/ggplot2')
+
+library(ggplot2)
+qplot(y = rnorm (10), x = 1:10)
+```
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "install pkgs"
+exshuffle: TRUE
+

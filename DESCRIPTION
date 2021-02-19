@@ -13,10 +13,11 @@ URL: https://github.com/msperlin/adfedR/
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1
-Depends: R (>= 3.5.0)
+Depends: R (>= 3.5.0), dplyr
 Imports: 
   utils,
   readr,
   purrr,
-  dplyr,
-  stats
+  stats,
+  exams,
+  fs

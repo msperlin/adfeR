@@ -1,0 +1,39 @@
+```{r solution, echo = FALSE, results = "hide", message=FALSE}
+time_1 <- as.POSIXct('2021-02-02 11:50:02')
+my_sec <- 10000
+
+my_sol <- time_1 + my_sec
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+candidates <- time_1 + sample(-10000:10000, 500)
+
+my_answers <- make_random_answers(my_sol, 
+                                  candidates = candidates)
+
+check_answers(my_answers)
+
+```
+
+Question
+========
+
+Qual data e horário é localizado `r my_sec` **segundos** após `r time_1`?
+
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: dates 3
+exshuffle: TRUE

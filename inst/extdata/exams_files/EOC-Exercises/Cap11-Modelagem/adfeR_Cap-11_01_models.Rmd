@@ -1,0 +1,72 @@
+```{r solution, echo = FALSE, results = "hide", message=FALSE, eval=TRUE}
+set.seed(5)
+
+# number of obs
+n_row <- 100
+
+# set x as Normal (0, 1)
+x <- rnorm(n_row)
+
+# set coefficients
+my_alpha <- 1.5
+my_beta <- 0.5
+
+# build y
+y <- my_alpha + my_beta*x + rnorm(n_row)
+
+library(tidyverse)
+
+my_lm <- lm(formula = y ~ x, data = tibble(x, y))
+
+summary(my_lm)
+
+my_sol <- coef(my_lm)[2]
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+# none
+my_answers <- make_random_answers(my_sol)
+```
+
+Question
+========
+
+Simule o seguinte processo linear no R:
+
+```{r}
+set.seed(5)
+
+# number of obs
+n_row <- 100
+
+# set x as Normal (0, 1)
+x <- rnorm(n_row)
+
+# set coefficients
+my_alpha <- 1.5
+my_beta <- 0.5
+
+# build y
+y <- my_alpha + my_beta*x + rnorm(n_row)
+```
+
+A partir de `x`  e `y`, estime  um modelo linear onde  `x` é a variável explicativa e `y` é a variável explicada. Use função  `summary` no objeto de retorno da estimação para obter mais detalhes sobre o modelo. Qual é o valor do beta estimado dos dados simulados?
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "function 01"
+exshuffle: TRUE
+

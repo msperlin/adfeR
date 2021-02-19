@@ -1,0 +1,84 @@
+```{r solution, echo = FALSE, results = "hide", message=FALSE, eval=FALSE}
+library(BatchGetSymbols)
+library(tidyverse)
+
+tickers <- GetSP500Stocks()$Tickers
+first_date <- Sys.Date() - 3*365
+last_date  <- Sys.Date()
+
+df_stocks <- BatchGetSymbols(tickers = tickers, 
+                             first.date = first_date, 
+                             last.date = last_date)[[2]]
+
+library(tidyverse)
+library(fMarkovSwitching)
+
+set.seed(10)
+
+random_stocks <- sample(unique(df_stocks$ticker), 4)
+
+temp_df <- df_stocks %>%
+  dplyr::filter(ticker %in% random_stocks)
+
+  tab_switching_model <- temp_df %>%
+  na.omit() %>%
+  group_by(ticker) %>%
+  do(ms_model = MS_Regress_Fit(dep = .$ret.adjusted.prices,
+                               indep = rep(1, nrow(.)),
+                               S = c(1), 
+                               k = 2))	# fitting the model)
+
+
+# using temp folder for solution
+
+plot_and_save <- function(model_in, ticker_in) {
+  
+  if (!dir.exists('figs')) dir.create('figs')
+  
+  out_file <- file.path('figs', paste0('plot_', ticker_in, '.jpg'))
+  
+  jpeg(out_file)
+  plot(model_in)
+  dev.off()
+  
+  return(TRUE)
+  
+  
+}
+
+library(purrr)
+
+l_out <- pmap(.l = list(model_in = tab_switching_model$ms_model,
+                        ticker_in = tab_switching_model$ticker), 
+              .f =  plot_and_save)
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+# none
+#my_answers <- make_random_answers(my_sol)
+my_answers <- rep(NA, 5)
+```
+
+Question
+========
+
+Para a mesma base de dados do SP500, selecione 4 ações aleatoriamente e estime um modelo de mudança de regime markoviano equivalente ao apresentado no item \@ref(mudanca-regime) para cada ação. Utilize função `plot` para apresentar o gráfico das probabilidades suavizadas e salve cada figura em uma pasta chamada `'fig'`.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "function 01"
+exshuffle: TRUE
+

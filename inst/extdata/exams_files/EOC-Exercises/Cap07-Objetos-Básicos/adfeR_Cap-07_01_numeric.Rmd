@@ -1,0 +1,46 @@
+```{r solution, echo = FALSE, results = "hide"}
+set.seed(7)
+
+x <- sample (1:3, size = 5, replace = T)
+y <- sample (1:3, size = 5, replace = T)
+
+# solution
+my_sol <- sum(x*y)
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+my_answers <- make_random_answers(my_sol)
+
+#check_answers(my_answers)
+```
+
+Question
+========
+
+Considere os seguintes os vetores x e y:
+
+```{r}
+set.seed(7)
+x <- sample (1:3, size = 5, replace = T)
+y <- sample (1:3, size = 5, replace = T)
+```
+
+Qual é a soma dos elementos de um novo vetor resultante da multiplicação entre os elementos de `x` e `y`?
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+Meta-information
+================
+extype: num
+exsolution: `r my_sol`
+exname: "numeric 02"
+exshuffle: TRUE
+

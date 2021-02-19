@@ -1,0 +1,49 @@
+```{r solution, echo = FALSE, results = "hide"}
+library(BatchGetSymbols)
+library(tidyverse)
+
+first_date <- '2010-01-01'
+last_date <- '2020-12-31'
+
+df_prices <- BatchGetSymbols(tickers = 'FB', 
+                             first.date = first_date,
+                             last.date = last_date)[[2]]
+
+value_purchase <- 1000
+
+# solution
+my_sol <- last(df_prices$price.adjusted)/first(df_prices$price.adjusted)*value_purchase
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+my_answers <- format_cash(
+  as.numeric(make_random_answers(my_sol)), 
+  type_cash = 'BRL')
+
+#check_answers(my_answers)
+```
+
+
+Question
+========
+
+Utilize pacote `BatchGetSymbols` para baixar dados da ação do Facebook (FB), de `r first_date` até `r last_date`. Caso o investidor tivesse comprado 1000 USD em ações do Facebook no primeiro dia dos dados e mantivesse o investimento até hoje, qual seria o valor do seu portfolio?
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "batchgetsymbols"
+exshuffle: TRUE
+

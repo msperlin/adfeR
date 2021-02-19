@@ -1,0 +1,50 @@
+```{r solution, echo = FALSE, results = "hide", cache=TRUE}
+my_link <- 'https://www.gutenberg.org/ebooks/2264.txt.utf-8'
+
+my_book <- readr::read_lines(my_link)
+
+# solution
+full_text <- paste0(my_book, collapse = '\n')
+my_split <- stringr::str_split(full_text, 
+                               pattern = stringr::fixed(' '))[[1]]
+
+# remove empty
+my_split <- my_split[my_split != '']
+
+my_tab <- sort(table(my_split), decreasing = TRUE)
+
+# solution
+my_sol <- names(my_tab[1])
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+my_answers <- make_random_answers(my_sol, 
+                                  candidates = names(my_tab[1:10]))
+
+#check_answers(my_answers)
+```
+
+
+Question
+========
+
+Para o objeto `full_text` criado anteriormente, utilize função `stringr::str_split` para _quebrar_ o texto inteiro em função de espaços em branco. Com base nesse, crie uma tabela de frequência. Qual a palavra mais utilizada no texto? Dica: Remova todos os casos de caracteres vazios (`''`).
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "pride and prejudice"
+exshuffle: TRUE
+

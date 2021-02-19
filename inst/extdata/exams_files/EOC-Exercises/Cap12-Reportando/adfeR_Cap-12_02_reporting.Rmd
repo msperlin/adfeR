@@ -1,0 +1,59 @@
+```{r solution, echo = FALSE, results = "hide", message=FALSE, eval=FALSE}
+library(BatchGetSymbols)
+library(tidyverse)
+
+tickers <- sample(GetSP500Stocks()$Tickers, 4)
+first_date <- Sys.Date() - 3*365
+last_date  <- Sys.Date()
+
+df_stocks <- BatchGetSymbols(tickers = tickers, 
+                             first.date = first_date, 
+                             last.date = last_date)[[2]]
+
+
+my_tab <- df_stocks %>%
+  na.omit() %>%
+  group_by(ticker) %>%
+  do(my_arima = arima(x = .$ret.adjusted.prices, 
+                      order = c(1, 0, 1))) 
+
+glimpse(my_tab)
+
+# solution
+library(texreg)
+
+screenreg(my_tab$my_arima)
+```
+
+```{r datageneration, echo = FALSE, results = "hide"}
+# none
+#my_answers <- make_random_answers(my_sol)
+my_answers <- rep(NA, 5)
+
+type_question <- 'string'
+ex_name <- 'reporting 12-02'
+```
+
+Question
+========
+
+Utilizando função `BatchGetSymbols::GetIbovStocks`, selecione 4 ações aleatoriamente e baixe os dados de preços ajustados para os últimos três anos. Estime um modelo ARIMA(1, 0, 1) para cada ação e reporte o resultado na tela do R com função `texreg::screenreg`.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+```{r solution, eval=FALSE}
+```
+
+
+Meta-information
+================
+extype: `r type_question`
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: `r ex_name`
+exshuffle: TRUE
+

@@ -1,0 +1,33 @@
+```{r datageneration, echo = FALSE, results = "hide"}
+
+my_answers <- c('Procurei e encontrei!', 
+                'Talvez eu procure',
+                'Nao vou procurar',
+                'Muito difícil',
+                'Minha internet caiu')
+
+check_answers(my_answers)
+```
+
+Question
+========
+
+Assim que tiver R e RStudio instalado, dirija-se ao [site de pacotes do CRAN](https://cloud.r-project.org/web/packages/available_packages_by_date.html)^[https://cloud.r-project.org/web/packages/available_packages_by_date.html] e procure por tecnologias que usas no seu trabalho. Por exemplo, se usas [Planilhas do Google (Sheets)](https://www.google.com/sheets/about/)^[https://www.google.com/sheets/about/] ostensivamente no seu trabalho, logo descobrirá que existe um pacote no CRAN que interage com planilhas na nuvem. 
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(my_answers, markup = "markdown")
+```
+
+Solution
+================
+
+No meu trabalho uso muito os dados do Tesouro Direto para criar e manter material da aula de finanças na graduação. Pois bem, no CRAN é possível encontrar o pacote [GetTDData](https://cloud.r-project.org/web/packages/GetTDData/index.html), o qual importa e organiza os dados do Tesouro Direto. Sou viesado para falar, afinal eu desenvolvi o pacote, mas ele facilitou bastante a atualização e exportação desses dados a cada semestre. Basta rodar um código e todos minhas tabelas e figuras são atualizadas!
+
+
+Meta-information
+================
+extype: string
+exsolution: `r mchoice2string(c(TRUE, FALSE, FALSE, FALSE, FALSE), single = TRUE)`
+exname: "Teconologias RStudio"
+exshuffle: TRUE
+
