@@ -20,4 +20,5 @@ Imports:
   purrr,
   stats,
   exams,
-  fs
+  fs,
+  tinytex
