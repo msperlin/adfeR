@@ -13,16 +13,12 @@ text3 <- tibble(text = c('O R tem compatibilidade com diferentes linguagens de p
                          'O R não tem compatibilidade com diferentes linguagens de programação;'),
                 sol = c(TRUE, FALSE))
 
-l <- build_answers_text(text1,
+l <- adfeR::build_answers_text(text1,
                         text2,
                         text3)
 
 my_answers <- l$my_answers
 my_texts <- l$texts
-
-check_answers(my_answers)
-
-#check_answers(my_answers)
 ```
 
 Question
