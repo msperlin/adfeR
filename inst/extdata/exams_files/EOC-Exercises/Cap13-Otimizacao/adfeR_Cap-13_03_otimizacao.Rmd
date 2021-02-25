@@ -52,9 +52,7 @@ Question
 
 Use o pacote `tictoc` para comparar o desempenho da função anterior com o operador nativo `+`, e uma versão baseada em loops com pré-alocação. Qual alternativa apresenta menor tempo de execução e por quê? A versão `Rcpp` vence a versão em loop?
 
-```{r questionlist, echo = FALSE, results = "asis"}
-exams::answerlist(my_answers, markup = "markdown")
-```
+
 
 Solution
 ================

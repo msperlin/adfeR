@@ -30,9 +30,7 @@ Question
 
 Use os mesmos dados diários do FTSE e reconstrua os dados na frequência mensal, novamente utilizando a última observação do período.
 
-```{r questionlist, echo = FALSE, results = "asis"}
-exams::answerlist(my_answers, markup = "markdown")
-```
+
 
 Solution
 ================

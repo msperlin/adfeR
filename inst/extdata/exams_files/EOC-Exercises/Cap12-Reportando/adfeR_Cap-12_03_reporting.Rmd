@@ -16,9 +16,7 @@ Question
 
 Crie um novo relatório em _Rmarkdown_ contemplando os dois exercícios anteriores. Compile o relatório em html e abra o mesmo no seu _browser_.
 
-```{r questionlist, echo = FALSE, results = "asis"}
-exams::answerlist(my_answers, markup = "markdown")
-```
+
 
 Solution
 ================

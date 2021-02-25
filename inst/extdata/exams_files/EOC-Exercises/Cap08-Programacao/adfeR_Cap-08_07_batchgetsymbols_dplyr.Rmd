@@ -27,9 +27,7 @@ Question
 
 Refaça o exercício anterior utilizando as funções `group_by` e `summarise`, ambas do pacote `dplyr`.
 
-```{r questionlist, echo = FALSE, results = "asis"}
-exams::answerlist(my_answers, markup = "markdown")
-```
+
 
 Solution
 ================

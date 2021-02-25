@@ -14,9 +14,6 @@ Question
 
 Assim que tiver R e RStudio instalado, dirija-se ao [site de pacotes do CRAN](https://cloud.r-project.org/web/packages/available_packages_by_date.html)^[https://cloud.r-project.org/web/packages/available_packages_by_date.html] e procure por tecnologias que usas no seu trabalho. Por exemplo, se usas [Planilhas do Google (Sheets)](https://www.google.com/sheets/about/)^[https://www.google.com/sheets/about/] ostensivamente no seu trabalho, logo descobrirá que existe um pacote no CRAN que interage com planilhas na nuvem. 
 
-```{r questionlist, echo = FALSE, results = "asis"}
-exams::answerlist(my_answers, markup = "markdown")
-```
 
 Solution
 ================

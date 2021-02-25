@@ -31,8 +31,6 @@ exams::answerlist(my_answers, markup = "markdown")
 Solution
 ================
 
-A solução é `r my_sol`. Rode o código abaixo para obter a solução:
-
 ```{r solution, eval=FALSE}
 ```
 

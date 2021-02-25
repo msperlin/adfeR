@@ -30,9 +30,7 @@ Question
 
 Para os dados anteriores, apresente o histograma dos retornos das diferentes ações em painéis diferentes e salve o resultado em um arquivo chamado `'histograms.png'`.
 
-```{r questionlist, echo = FALSE, results = "asis"}
-exams::answerlist(my_answers, markup = "markdown")
-```
+
 
 Solution
 ================

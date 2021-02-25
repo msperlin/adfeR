@@ -31,9 +31,7 @@ Question
 
 Baixe dados das ações PETR3 (PETR3.SA), VALE3 (VALE3.SA), GGBR4 (GGBR4.SA)  com `BatchGetSymbols` para os últimos 1500 dias. Apresente, no mesmo gráfico, os preços das ações com diferentes cores de linhas. Mantenha todos demais aspectos do gráfico anterior.
 
-```{r questionlist, echo = FALSE, results = "asis"}
-exams::answerlist(my_answers, markup = "markdown")
-```
+
 
 Solution
 ================

@@ -13,9 +13,6 @@ Question
 
 Utilize a função `unzip` para descompactar o arquivo baixado na questão anterior para um diretório chamado `'adfeR-Files'` dentro da pasta do "Desktop". Quantos arquivos estão disponíveis na pasta resultante? Dica: use o argumento `recursive = TRUE` com `list.files` para procurar também todos subdiretórios disponíveis.
 
-```{r questionlist, echo = FALSE, results = "asis"}
-exams::answerlist(my_answers, markup = "markdown")
-```
 
 Solution
 ================

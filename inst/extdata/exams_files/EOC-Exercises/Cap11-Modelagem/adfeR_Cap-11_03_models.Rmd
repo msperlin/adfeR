@@ -40,9 +40,6 @@ Question
 
 Utilize pacote  `gvlma` para testar as premissas do OLS para o modelo estimado anteriormente. O modelo passa em todos os testes? Em caso negativo, aumente o valor de `n_row` para 1000 e tente novamente. O aumento do número de observações do modelo impactou no teste das premissas? De que forma?
 
-```{r questionlist, echo = FALSE, results = "asis"}
-exams::answerlist(my_answers, markup = "markdown")
-```
 
 Solution
 ================

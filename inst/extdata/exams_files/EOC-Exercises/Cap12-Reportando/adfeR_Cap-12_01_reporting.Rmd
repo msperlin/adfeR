@@ -36,9 +36,7 @@ Question
 
 Observe os dados disponíveis no arquivo `grunfeld.csv`. Importe os dados no R e monte uma tabela descritiva das variáveis. Essa tabela deve oferecer informações suficientes para o leitor entender os dados. Utilize pacote `xtable` para reportar a mesma no formato _LaTeX_ ou Word/Writer.
 
-```{r questionlist, echo = FALSE, results = "asis"}
-exams::answerlist(my_answers, markup = "markdown")
-```
+
 
 Solution
 ================

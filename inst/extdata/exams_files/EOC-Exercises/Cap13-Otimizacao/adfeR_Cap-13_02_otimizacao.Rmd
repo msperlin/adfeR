@@ -35,9 +35,6 @@ Question
 
 Use o pacote `Rcpp` para escrever e usar uma função em linguagem C++ que irá adicionar elementos dos vetores `x` e `y`, elemento por elemento. A saída deve ser outro vetor de mesmo tamanho e com elementos iguais a operação `x + y`. Use a função `identical` para testar se todos os elementos de ambos os vetores são iguais.
 
-```{r questionlist, echo = FALSE, results = "asis"}
-exams::answerlist(my_answers, markup = "markdown")
-```
 
 Solution
 ================

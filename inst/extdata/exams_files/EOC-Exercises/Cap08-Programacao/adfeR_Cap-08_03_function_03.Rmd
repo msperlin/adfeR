@@ -43,9 +43,6 @@ Question
 
 Crie um vetor com cinco nomes quaisquer, chamado `my_names`. Utilizando um _loop_, aplique função `say_my_name` para cada elemento de  `my_names`.
 
-```{r questionlist, echo = FALSE, results = "asis"}
-exams::answerlist(my_answers, markup = "markdown")
-```
 
 Solution
 ================

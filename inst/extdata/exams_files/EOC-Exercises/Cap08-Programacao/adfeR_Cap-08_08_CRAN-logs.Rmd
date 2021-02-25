@@ -64,9 +64,12 @@ Question
 
 No site do [Rstudio CRAN logs](http://cran-logs.rstudio.com/)^[http://cran-logs.rstudio.com/] você encontrará  dados sobre as estatísticas de download para a distribuição de base de R na seção _Daily R downloads_. Usando suas habilidades de programação, importe todos os dados disponíveis entre `r first_date` e `r last_date` e agregue-os em uma única tabela. Qual país apresenta a maior contagem de downloads do R? 
 
+
 ```{r questionlist, echo = FALSE, results = "asis"}
 exams::answerlist(my_answers, markup = "markdown")
 ```
+
+
 
 Solution
 ================

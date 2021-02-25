@@ -60,9 +60,6 @@ Question
 
 Utilize função `BatchGetSymbols::GetSP500Stocks` para baixar dados de todas ações pertencentes ao atual índice SP500 para os últimos três anos. Usando o SP500 como  o índice de mercado, calcule o beta para cada uma das ações. Apresente o histograma dos _betas_ estimados. Note que os retornos do SP500 (`'^GSPC'`) não estão disponíveis na base de dados original e devem ser baixados e agregados a base de dados original.
 
-```{r questionlist, echo = FALSE, results = "asis"}
-exams::answerlist(my_answers, markup = "markdown")
-```
 
 Solution
 ================

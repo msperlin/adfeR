@@ -21,9 +21,7 @@ Question
 
 Crie um objeto do tipo lista com três `dataframes` em seu conteúdo, `df1`,  `df2` e `df3`. O conteúdo e tamanho dos `dataframes` é livre. Utilize função `sapply` para descobrir o número de linhas e colunas em cada `dataframe`.
 
-```{r questionlist, echo = FALSE, results = "asis"}
-#exams::answerlist(my_answers, markup = "markdown")
-```
+
 
 Solution
 ================

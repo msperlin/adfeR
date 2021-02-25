@@ -34,9 +34,7 @@ Question
 
 Use o pacote `memoise` para criar uma versão memorizada de `Quandl::Quandl`. Use a nova função para importar dados para o Índice de Preços ao Consumidor dos Estados Unidos (código `'FRED/DDOE01USA086NWDB'`). Quanto de ganho de velocidade em porcentagem você obtém da segunda chamada para a versão memorizada?
 
-```{r questionlist, echo = FALSE, results = "asis"}
-exams::answerlist(my_answers, markup = "markdown")
-```
+
 
 Solution
 ================

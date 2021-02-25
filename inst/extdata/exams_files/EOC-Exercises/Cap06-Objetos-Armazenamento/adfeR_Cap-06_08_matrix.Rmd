@@ -15,9 +15,6 @@ Question
 
 Utilizando o R, crie uma matrix identidade (valor 1 na diagonal, zero em qualquer outro) de tamanho 3X3. Dica: use função `diag` para definir a diagonal da matrix.
 
-```{r questionlist, echo = FALSE, results = "asis"}
-#exams::answerlist(my_answers, markup = "markdown")
-```
 
 Solution
 ================

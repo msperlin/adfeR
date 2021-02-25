@@ -38,9 +38,7 @@ Question
 
 Modifique o tema do gráfico anterior para uma escala em preto e branco, tanto para a área do gráfico quanto para as cores das linhas.
 
-```{r questionlist, echo = FALSE, results = "asis"}
-exams::answerlist(my_answers, markup = "markdown")
-```
+
 
 Solution
 ================

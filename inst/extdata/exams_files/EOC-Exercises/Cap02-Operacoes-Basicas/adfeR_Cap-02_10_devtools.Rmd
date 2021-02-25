@@ -13,9 +13,6 @@ Question
 
 Utilizando pacote `devtools`, instale a versão de desenvolvimento do pacote `ggplot2`, disponível no repositório de [Hadley Hickman](https://github.com/hadley). Carregue o pacote usando `library` e crie uma figura simples com o código `qplot(y = rnorm(10), x = 1:10)`.
 
-```{r questionlist, echo = FALSE, results = "asis"}
-exams::answerlist(my_answers, markup = "markdown")
-```
 
 Solution
 ================

@@ -37,11 +37,9 @@ ex_name <- 'reporting 12-02'
 Question
 ========
 
-Utilizando função `BatchGetSymbols::GetIbovStocks`, selecione 4 ações aleatoriamente e baixe os dados de preços ajustados para os últimos três anos. Estime um modelo ARIMA(1, 0, 1) para cada ação e reporte o resultado na tela do R com função `texreg::screenreg`.
+Utilizando função `BatchGetSymbols::GetSP500Stocks`, selecione 4 ações aleatoriamente e baixe os dados de preços ajustados para os últimos três anos. Estime um modelo ARIMA(1, 0, 1) para cada ação e reporte o resultado na tela do R com função `texreg::screenreg`.
 
-```{r questionlist, echo = FALSE, results = "asis"}
-exams::answerlist(my_answers, markup = "markdown")
-```
+
 
 Solution
 ================

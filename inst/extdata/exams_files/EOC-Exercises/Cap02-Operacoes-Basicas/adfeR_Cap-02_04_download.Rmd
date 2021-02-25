@@ -1,12 +1,5 @@
 ```{r datageneration, echo = FALSE, results = "hide"}
-my_answers <- c('S+', 
-                'C++',
-                'Python',
-                'Matlab',
-                'Javascript')
-
 book_site_zip <- adfeR::get_links_book()$book_site_zip
-#check_answers(my_answers)
 ```
 
 Question
@@ -14,9 +7,7 @@ Question
 
 Utilize o R para baixar o arquivo compactado com o material do livro, disponível nesse [link](`r book_site_zip`)^[`r book_site_zip`]. Salve o mesmo como um arquivo na pasta temporária da sessão (veja função `tempfile`).
 
-```{r questionlist, echo = FALSE, results = "asis"}
-exams::answerlist(my_answers, markup = "markdown")
-```
+
 
 Solution
 ================

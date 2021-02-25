@@ -41,9 +41,7 @@ Question
 
 Para os dados importados anteriormente, estime uma versão em dados de painel para o modelo de mercado (beta). Nesta versão, cada ação possui um intercepto diferente, porém compartilham o mesmo beta. O beta estimado é significativo a 5%?
 
-```{r questionlist, echo = FALSE, results = "asis"}
-exams::answerlist(my_answers, markup = "markdown")
-```
+
 
 Solution
 ================

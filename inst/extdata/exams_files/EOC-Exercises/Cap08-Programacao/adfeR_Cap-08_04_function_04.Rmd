@@ -52,9 +52,6 @@ Question
 
 No banco de dados do [Brasil.IO](https://data.brasil.io/dataset/genero-nomes/grupos.csv.gz)^[https://data.brasil.io/dataset/genero-nomes/grupos.csv.gz] encontrarás uma tabela com nomes e gêneros derivados de uma das pesquisas do IBGE. Importe os dados do arquivo para R e, usando um _loop_, aplique a função `say_my_name` a 15 nomes aleatórios do banco de dados. Dica: neste caso, você pode baixar os dados direto do link usando `readr::read_csv(LINK)`.
 
-```{r questionlist, echo = FALSE, results = "asis"}
-exams::answerlist(my_answers, markup = "markdown")
-```
 
 Solution
 ================

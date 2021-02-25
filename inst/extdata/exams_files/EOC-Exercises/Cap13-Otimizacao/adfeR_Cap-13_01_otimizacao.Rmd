@@ -60,9 +60,7 @@ summary(my_arima)
 
 Use funcões `Rprof` e `profvis` para identificar o gargalo do código. Qual número da linha que está tomando maior tempo de execução?
 
-```{r questionlist, echo = FALSE, results = "asis"}
-exams::answerlist(my_answers, markup = "markdown")
-```
+
 
 Solution
 ================

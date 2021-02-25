@@ -40,9 +40,7 @@ Question
 
 Utilizando as funções do tidyverse, `dplyr::group_by` e `dplyr::do`, estime um modelo ARIMA para os retornos de cada ação dos dados importados no exercício do SP500. No mesmo `dataframe` de saída, crie uma nova coluna com a previsão em _t+1_ de cada modelo. Qual ação possui maior expectativa de retorno para _t+1_?
 
-```{r questionlist, echo = FALSE, results = "asis"}
-exams::answerlist(my_answers, markup = "markdown")
-```
+
 
 Solution
 ================

@@ -31,9 +31,7 @@ Baixe dados da ação CIEL3 com o pacote `BatchGetSymbols` para os últimos 500 
 - Eixos x e y estão corretamente nomeados
 - O gráfico tem um título ("Preços para CIEL3"), subtítulo ("Dados de YYYY-MM-DD até YYYY-MM-DD") e um _caption_ ("Solução para exercício 01, cap 10 - adfeR").
 
-```{r questionlist, echo = FALSE, results = "asis"}
-exams::answerlist(my_answers, markup = "markdown")
-```
+
 
 Solution
 ================

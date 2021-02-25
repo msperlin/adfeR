@@ -1,11 +1,6 @@
 ```{r datageneration, echo = FALSE, results = "hide"}
-my_answers <- c('Encontrei os artigos!', 
-                'Ainda não fui',
-                'Talvez..',
-                'Não irei!',
-                'TLDR')
+# no data generation
 
-check_answers(my_answers)
 ```
 
 Question
@@ -13,9 +8,7 @@ Question
 
 Dirija-se ao site do [RBloggers](https://www.r-bloggers.com/)^[https://www.r-bloggers.com/] e procure por um tópico do seu interesse, tal como futebol (_soccer_) ou investimentos (_investments_). Leia pelo menos três artigos encontrados.
 
-```{r questionlist, echo = FALSE, results = "asis"}
-exams::answerlist(my_answers, markup = "markdown")
-```
+
 
 Solution
 ================

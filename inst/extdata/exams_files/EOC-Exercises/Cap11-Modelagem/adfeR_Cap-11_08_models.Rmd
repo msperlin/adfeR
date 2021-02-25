@@ -64,9 +64,7 @@ Question
 
 Para a mesma base de dados do SP500, selecione 4 ações aleatoriamente e estime um modelo de mudança de regime markoviano equivalente ao apresentado no item \@ref(mudanca-regime) para cada ação. Utilize função `plot` para apresentar o gráfico das probabilidades suavizadas e salve cada figura em uma pasta chamada `'fig'`.
 
-```{r questionlist, echo = FALSE, results = "asis"}
-exams::answerlist(my_answers, markup = "markdown")
-```
+
 
 Solution
 ================

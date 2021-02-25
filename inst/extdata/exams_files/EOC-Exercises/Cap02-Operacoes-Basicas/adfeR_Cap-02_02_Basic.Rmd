@@ -13,9 +13,6 @@ Question
 
 No _script_ criado anteriormente, use função `message` para mostrar a seguinte frase no _prompt_ do R: `"My name is ...."`.
 
-```{r questionlist, echo = FALSE, results = "asis"}
-exams::answerlist(my_answers, markup = "markdown")
-```
 
 Solution
 ================

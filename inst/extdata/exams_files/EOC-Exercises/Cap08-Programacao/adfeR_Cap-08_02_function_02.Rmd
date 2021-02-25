@@ -46,9 +46,6 @@ Question
 
 Implemente um teste para os objetos de entrada, de forma que, quando o nome de entrada não for da classe `character`, um erro é retornado ao usuário. Teste sua nova função e verifique se a mesma está funcionando conforme esperado.
 
-```{r questionlist, echo = FALSE, results = "asis"}
-exams::answerlist(my_answers, markup = "markdown")
-```
 
 Solution
 ================

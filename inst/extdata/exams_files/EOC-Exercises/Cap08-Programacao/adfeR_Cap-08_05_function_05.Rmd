@@ -54,9 +54,7 @@ Question
 
 Refaça o exercício anterior utilizando comandos `sapply` ou `purrr::map`.
 
-```{r questionlist, echo = FALSE, results = "asis"}
-exams::answerlist(my_answers, markup = "markdown")
-```
+
 
 Solution
 ================

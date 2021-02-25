@@ -34,9 +34,7 @@ Question
 
 Para o gráfico anterior, adicione pontos nas linhas.
 
-```{r questionlist, echo = FALSE, results = "asis"}
-exams::answerlist(my_answers, markup = "markdown")
-```
+
 
 Solution
 ================

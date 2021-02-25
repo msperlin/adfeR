@@ -29,9 +29,6 @@ Question
 
 Use a função `BatchGetSymbols::BatchGetSymbols` para baixar os preços do índice FTSE (`'^FTSE'`) de `r first_date` até `r last_date`. Em seguida, reconstrua os dados na frequência anual, definindo cada valor do ano como sendo a última observação do período. Dica: veja a função `dplyr::summary_all` para uma forma funcional de agregar todas as colunas de um `dataframe`.
 
-```{r questionlist, echo = FALSE, results = "asis"}
-exams::answerlist(my_answers, markup = "markdown")
-```
 
 Solution
 ================

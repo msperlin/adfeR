@@ -45,9 +45,7 @@ Question
 
 No mesmo código utilizado na questão anterior, adicione uma nova coluna-lista com a estimação de um modelo ARMA(1,0)-GARCH(1,1) para os retornos de cada ação. Adicione outra coluna com a previsão de volatilidade (desvio padrão) em _t+1_. Ao dividir o retorno esperado calculado no item anterior pelo risco previsto, temos um índice de direção do mercado, onde aquelas ações com maior valor de índice apresentam maior retorno esperado por menor risco. Qual ação é mais atrativa e possui maior valor deste índice?
 
-```{r questionlist, echo = FALSE, results = "asis"}
-exams::answerlist(my_answers, markup = "markdown")
-```
+
 
 Solution
 ================

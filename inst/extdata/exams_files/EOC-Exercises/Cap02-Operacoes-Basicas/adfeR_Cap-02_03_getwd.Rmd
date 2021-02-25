@@ -1,11 +1,6 @@
 ```{r datageneration, echo = FALSE, results = "hide"}
-my_answers <- c('S+', 
-                'C++',
-                'Python',
-                'Matlab',
-                'Javascript')
+# no datageneration
 
-#check_answers(my_answers)
 ```
 
 Question
@@ -13,9 +8,6 @@ Question
 
 Dentro do mesmo script, mostre o diretório atual de trabalho (veja função `getwd`, tal como em `print(getwd())`). Agora, modifique o seu diretório de trabalho para o _Desktop_ (_Área de Trabalho_) e mostre a seguinte mensagem na tela do _prompt_: `'My desktop address is ....'`. Dica: use e abuse da ferramenta _autocomplete_ do RStudio para rapidamente encontrar a pasta do _desktop_.
 
-```{r questionlist, echo = FALSE, results = "asis"}
-exams::answerlist(my_answers, markup = "markdown")
-```
 
 Solution
 ================

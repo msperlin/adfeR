@@ -28,9 +28,6 @@ print(df)
 
 O formato do `dataframe` é longo ou largo? Explique sua resposta.
 
-```{r questionlist, echo = FALSE, results = "asis"}
-exams::answerlist(my_answers, markup = "markdown")
-```
 
 Solution
 ================

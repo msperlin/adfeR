@@ -13,9 +13,6 @@ Question
 
 Imagine uma pesquisa envolvendo a análise do seu orçamento doméstico ao longo do tempo. Dados estão disponíveis em planilhas eletrônicas separadas por mês, durante 10 anos. O objetivo da pesquisa é entender se é possível a compra de um imóvel daqui a cinco anos. A partir disso, detalhe em texto os elementos em cada etapa do estudo, desde importação dos dados até a construção do relatório.
 
-```{r questionlist, echo = FALSE, results = "asis"}
-exams::answerlist(my_answers, markup = "markdown")
-```
 
 Solution
 ================

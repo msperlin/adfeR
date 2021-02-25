@@ -38,9 +38,6 @@ my_l <- list(df1 = tibble(x = 1:100, y = runif(100)),
 
 Agrege todos `dataframes` em `my_l` para um objeto único usando funções `do.call` ou `dplyr::bind_rows`. O que aconteceu com os dados de `df1` onde colunas `v` e `z` não existem?
 
-```{r questionlist, echo = FALSE, results = "asis"}
-exams::answerlist(my_answers, markup = "markdown")
-```
 
 Solution
 ================

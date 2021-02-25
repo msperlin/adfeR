@@ -23,9 +23,6 @@ my_df <- tibble(x = 1:my_N,
 
 Exporte o dataframe resultante para cada um dos cinco formatos: csv, rds, xlsx, fst. Qual dos formatos ocupou maior espaço na memória do computador? Dica: `file.size` calcula o tamanho de arquivos dentro do próprio R.
 
-```{r questionlist, echo = FALSE, results = "asis"}
-exams::answerlist(my_answers, markup = "markdown")
-```
 
 Solution
 ================

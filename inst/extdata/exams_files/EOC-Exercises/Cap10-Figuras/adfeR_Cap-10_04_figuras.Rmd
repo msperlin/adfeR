@@ -36,9 +36,7 @@ Question
 
 Para o mesmo gráfico, separe os preços das ações em painéis diferentes com a função `ggplot::facet_wrap`. Use argumento `scales = 'free'` para "soltar" os eixos de cada figura. 
 
-```{r questionlist, echo = FALSE, results = "asis"}
-exams::answerlist(my_answers, markup = "markdown")
-```
+
 
 Solution
 ================

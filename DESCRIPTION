@@ -21,4 +21,6 @@ Imports:
   stats,
   exams,
   fs,
-  tinytex
+  tinytex,
+  rmarkdown
+

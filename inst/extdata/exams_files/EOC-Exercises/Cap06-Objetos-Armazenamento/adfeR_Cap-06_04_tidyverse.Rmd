@@ -13,9 +13,6 @@ Question
 
 Caso não o tenha feito, repita os exercícios 1, 2 e 3 utilizando as funções do `tidyverse` e o operador de _pipeline_.
 
-```{r questionlist, echo = FALSE, results = "asis"}
-#exams::answerlist(my_answers, markup = "markdown")
-```
 
 Solution
 ================

@@ -28,9 +28,6 @@ Question
 
 Crie uma função chamada `say_my_name` que tome como entrada um nome de pessoa e mostre na tela o texto _Your name is ..._. Dentro do escopo da função, utilize comentários para descrever o propósito da função, suas entradas e saídas.
 
-```{r questionlist, echo = FALSE, results = "asis"}
-exams::answerlist(my_answers, markup = "markdown")
-```
 
 Solution
 ================
