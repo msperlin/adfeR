@@ -22,5 +22,6 @@ Imports:
   exams,
   fs,
   tinytex,
-  rmarkdown
+  rmarkdown.
+  tidyr
 

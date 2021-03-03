@@ -1,10 +1,8 @@
 ```{r solution, echo = FALSE, results = "hide"}
-library(tidyverse)
-
 my_f <- adfeR::get_data_file('SP500.csv')
 
-df_SP500 <- read_csv(my_f, 
-                     col_types = cols())
+df_SP500 <- readr::read_csv(my_f, 
+                     col_types = readr::cols())
 
 my_msg <- paste0('There are ', nrow(df_SP500), ' rows and ', 
                  ncol(df_SP500), ' columns in file ', basename(my_f))
@@ -14,7 +12,7 @@ my_sol <- nrow(df_SP500)
 ```
 
 ```{r datageneration, echo = FALSE, results = "hide"}
-my_answer <- make_random_answers(my_sol)
+my_answer <- adfeR::make_random_answers(my_sol)
 
 #check_answers(my_answers)
 ```
