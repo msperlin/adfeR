@@ -1,11 +1,3 @@
-format_date <- function(x) {
-
-  x <- as.Date(x)
-  x.formatted <- format(x, '%d/%m/%Y')
-
-  return(x.formatted)
-}
-
 
 replace_str_file <- function(f.in, f.out, str.id, str.replace) {
 
